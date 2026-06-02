@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand palette — clear, blue, sunny Jupiter waters */
+  --color-deep: #07314a;
+  --color-ocean: #0e6ba8;
+  --color-lagoon: #109fb8;
+  --color-aqua: #46cfd6;
+  --color-foam: #eaf7fb;
+  --color-sand: #f7f2e7;
+  --color-sun: #ff8b3d;
+  --color-sunsoft: #ffb066;
+  --color-ink: #0c2a3a;
+  --color-inkmuted: #496575;
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+
+  /* Fluid type scale — large, legible, mobile-first */
+  --text-base: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
+  --text-lg: clamp(1.1875rem, 1.05rem + 0.6vw, 1.375rem);
+  --text-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.625rem);
+  --text-2xl: clamp(1.6rem, 1.3rem + 1.4vw, 2.1rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.4vw, 2.9rem);
+  --text-4xl: clamp(2.5rem, 1.8rem + 3.6vw, 4rem);
+  --text-5xl: clamp(3rem, 2rem + 5vw, 5rem);
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: var(--color-ink);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Slow, calm "viewfinder" drift for the hero still image */
+@keyframes slow-drift {
+  0%   { transform: scale(1.08) translate3d(0, 0, 0); }
+  50%  { transform: scale(1.13) translate3d(-1.5%, -1%, 0); }
+  100% { transform: scale(1.08) translate3d(0, 0, 0); }
+}
+.animate-slow-drift {
+  animation: slow-drift 32s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.6; }
+}
+.animate-shimmer {
+  animation: shimmer 7s ease-in-out infinite;
 }

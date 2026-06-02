@@ -1,0 +1,93 @@
+import Link from "next/link";
+import type { SiteContent } from "@/lib/content/types";
+import { Container } from "@/components/ui/Container";
+import { BookNowButton } from "@/components/ui/BookNowButton";
+import {
+  PhoneIcon,
+  MailIcon,
+  ClockIcon,
+  MapPinIcon,
+  FacebookIcon,
+  InstagramIcon,
+} from "@/components/ui/icons";
+
+const NAV = [
+  { label: "Tours", href: "/#tours" },
+  { label: "What You'll See", href: "/#wildlife" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Reviews", href: "/#reviews" },
+  { label: "Gift Cards", href: "/#gift" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Where We Launch", href: "/#launch" },
+  { label: "Contact Us", href: "/#contact" },
+];
+
+export function Footer({ content }: { content: SiteContent }) {
+  const { site } = content;
+  const tel = `tel:${site.phone.replace(/[^0-9]/g, "")}`;
+  return (
+    <footer className="mt-4 bg-deep text-foam">
+      <Container className="py-14">
+        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
+          <div>
+            <div className="flex items-center gap-2 font-display text-xl font-extrabold text-white">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-aqua to-ocean">
+                <span aria-hidden>🛶</span>
+              </span>
+              Clear Kayaking Adventures
+            </div>
+            <p className="mt-4 max-w-sm text-foam/80">
+              100% clear kayak eco tours through Jupiter, Florida&apos;s beautiful
+              waterways. Small groups, local guides, unforgettable wildlife.
+            </p>
+            <div className="mt-5 flex gap-3">
+              {site.social.map((s) => (
+                <a
+                  key={s.url}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.platform}
+                  className="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
+                >
+                  {s.platform === "facebook" ? <FacebookIcon /> : <InstagramIcon />}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-2 content-start">
+            {NAV.map((item) => (
+              <Link key={item.href} href={item.href} className="text-foam/85 hover:text-white">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="space-y-3">
+            <a href={tel} className="flex items-center gap-3 text-foam/90 hover:text-white">
+              <PhoneIcon className="h-5 w-5 text-aqua" /> {site.phone}
+            </a>
+            <a href={`mailto:${site.email}`} className="flex items-center gap-3 text-foam/90 hover:text-white">
+              <MailIcon className="h-5 w-5 text-aqua" /> {site.email}
+            </a>
+            <p className="flex items-center gap-3 text-foam/90">
+              <ClockIcon className="h-5 w-5 text-aqua" /> {site.hours}
+            </p>
+            <p className="flex items-center gap-3 text-foam/90">
+              <MapPinIcon className="h-5 w-5 text-aqua" /> Jupiter, Florida
+            </p>
+            <BookNowButton href={site.fareHarborUrl} className="mt-2">
+              Book Now
+            </BookNowButton>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-foam/60 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
+          <p>Clear Kayaking Jupiter · Indian River &amp; Loxahatchee eco tours</p>
+        </div>
+      </Container>
+    </footer>
+  );
+}

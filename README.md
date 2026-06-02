@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Clear Kayaking Adventures
 
-## Getting Started
+Marketing site for Clear Kayaking Adventures — guided clear-kayak eco tours in
+Jupiter, FL. Next.js (App Router) + Tailwind + Sanity CMS, deployed on Vercel.
+Booking is handled by FareHarbor.
 
-First, run the development server:
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # fill in values (all optional for local dev)
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site renders fully with **bundled sample content** (`lib/content/sample.ts`)
+until Sanity is connected — no env vars required to see the full site locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How content works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`lib/content/index.ts#getContent()` is the single source of truth:
 
-## Learn More
+1. Starts from `sampleContent`.
+2. If Sanity env vars are set, fetches the CMS and merges over the sample
+   (missing fields fall back to sample values).
+3. If a Google Places key + Place ID are set, overlays live Google reviews.
 
-To learn more about Next.js, take a look at the following resources:
+So the site degrades gracefully at every layer.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## CMS (Sanity)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Studio is embedded at **`/studio`**.
+- Create a project at https://sanity.io/manage, set the env vars, then add
+  content through the embedded Studio.
+- Singletons (Site Settings, Announcement Bar, Homepage) + ordered collections
+  (Tours, Wildlife, Launch Locations, Reviews, FAQs).
+- Owner edits go live without a redeploy via a webhook → `/api/revalidate`
+  (POST with header `x-revalidate-secret` = `SANITY_REVALIDATE_SECRET`).
 
-## Deploy on Vercel
+## Environment variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+See `.env.example`. All optional for local dev; required for the live CMS,
+reviews, and revalidation. `GOOGLE_MAPS_API_KEY` is **server-only** — never
+prefix it with `NEXT_PUBLIC_`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## SEO
+
+Per-route metadata, `app/sitemap.ts`, `app/robots.ts` (disallows `/studio`),
+and JSON-LD via `lib/schema/` (LocalBusiness, WebSite, FAQPage, Review,
+TouristTrip + Offer, BreadcrumbList). Primary keyword: "Clear Kayaking Jupiter".
+
+## Open items (need owner input)
+
+- **Images** — real hero/tour/wildlife photos (currently on-brand gradient
+  placeholders). Upload in Sanity or add to the repo.
+- **Tour prices** — not shown until set on each `tour` in Sanity.
+- **Google Place ID** — set on Site Settings to pull live Google reviews.
+- **Gift card link** — confirm FareHarbor vs. external (Square) URL.
+- **Per-tour FareHarbor deep links** — optional override per tour; falls back
+  to the site-wide booking URL.
