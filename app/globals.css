@@ -42,7 +42,7 @@ body {
   font-size: var(--text-base);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  padding-bottom: 104px;
+  padding-bottom: calc(104px + env(safe-area-inset-bottom));
 }
 
 @media (min-width: 1024px) {
