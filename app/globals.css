@@ -42,6 +42,13 @@ body {
   font-size: var(--text-base);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  padding-bottom: calc(104px + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 1024px) {
+  body {
+    padding-bottom: 0;
+  }
 }
 
 h1, h2, h3, h4 {

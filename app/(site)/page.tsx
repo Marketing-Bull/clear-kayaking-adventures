@@ -1,8 +1,9 @@
 import { getContent } from "@/lib/content";
 import { JsonLd } from "@/components/JsonLd";
-import { faqSchema, reviewsSchema, websiteSchema } from "@/lib/schema";
+import { faqSchema, reviewsSchema, tourItemListSchema, websiteSchema } from "@/lib/schema";
 import { Hero } from "@/components/sections/Hero";
 import { Pillars } from "@/components/sections/Pillars";
+import { TrustStrip } from "@/components/sections/TrustStrip";
 import { ToursSection } from "@/components/sections/ToursSection";
 import { Wildlife } from "@/components/sections/Wildlife";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -16,8 +17,9 @@ export default async function HomePage() {
   const content = await getContent();
   return (
     <>
-      <JsonLd data={[websiteSchema(content), faqSchema(content), ...reviewsSchema(content)]} />
+      <JsonLd data={[websiteSchema(content), tourItemListSchema(content), faqSchema(content), ...reviewsSchema(content)]} />
       <Hero content={content} />
+      <TrustStrip content={content} />
       <Pillars content={content} />
       <ToursSection content={content} />
       <Wildlife content={content} />

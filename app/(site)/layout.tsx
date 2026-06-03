@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { JsonLd } from "@/components/JsonLd";
+import { MobileBookingBar } from "@/components/layout/MobileBookingBar";
 
 export default async function SiteLayout({
   children,
@@ -16,6 +17,7 @@ export default async function SiteLayout({
       <Header content={content} />
       <main className="flex-1">{children}</main>
       <Footer content={content} />
+      <MobileBookingBar content={content} />
     </>
   );
 }
