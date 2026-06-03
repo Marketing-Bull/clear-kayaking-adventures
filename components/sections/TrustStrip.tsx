@@ -6,7 +6,7 @@ import { StarIcon } from "@/components/ui/icons";
 export function TrustStrip({ content }: { content: SiteContent }) {
   const reviewCount = content.reviews.length;
   const averageRating = reviewCount
-    ? (content.reviews.reduce((sum, review) => sum + review.rating, 0) / reviewCount).toFixed(1)
+    ? (content.reviews.reduce((sum, review) => sum + (review.rating || 0), 0) / reviewCount).toFixed(1)
     : "5.0";
 
   const proof = [
