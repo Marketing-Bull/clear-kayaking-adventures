@@ -7,7 +7,7 @@ import { StarIcon } from "@/components/ui/icons";
 export function Hero({ content }: { content: SiteContent }) {
   const { hero, site, reviews } = content;
   const averageRating = reviews.length
-    ? (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1)
+    ? (reviews.reduce((sum, review) => sum + (review.rating || 0), 0) / reviews.length).toFixed(1)
     : "5.0";
 
   return (
