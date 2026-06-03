@@ -134,5 +134,43 @@ export function websiteSchema(content: SiteContent) {
     "@type": "WebSite",
     name: content.site.name,
     url: content.site.siteUrl,
+    description: content.site.seoDescription,
+    inLanguage: "en-US",
+    publisher: {
+      "@id": `${content.site.siteUrl}/#business`,
+    },
+    potentialAction: {
+      "@type": "ReserveAction",
+      target: content.site.fareHarborUrl,
+      name: "Book a clear kayak tour",
+    },
+  };
+}
+
+export function tourItemListSchema(content: SiteContent) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Clear Kayak Tours in Jupiter, FL",
+    description: content.toursSection.intro,
+    itemListElement: content.tours.map((tour, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "TouristTrip",
+        name: tour.name,
+        description: tour.shortDescription,
+        url: `${content.site.siteUrl}/tours/${tour.slug}`,
+        provider: {
+          "@id": `${content.site.siteUrl}/#business`,
+        },
+        offers: {
+          "@type": "Offer",
+          url: tour.fareHarborUrl || content.site.fareHarborUrl,
+          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+        },
+      },
+    })),
   };
 }

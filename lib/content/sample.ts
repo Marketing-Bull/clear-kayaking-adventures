@@ -18,9 +18,9 @@ export const sampleContent: SiteContent = {
       { platform: "facebook", url: "https://www.facebook.com/clearkayakingadventures" },
       { platform: "instagram", url: "https://www.instagram.com/clearkayakingadventure" },
     ],
-    seoTitle: "Clear Kayaking Jupiter | Crystal-Clear Kayak Eco Tours in Jupiter, FL",
+    seoTitle: "Clear Kayak Tours in Jupiter, FL | Clear Kayaking Adventures",
     seoDescription:
-      "Paddle Jupiter's waterways in a 100% clear kayak. Small-group, guided eco tours on the Indian River & Loxahatchee. See manatees & sea turtles. Beginner & family friendly. Book online.",
+      "Book clear kayak tours in Jupiter, FL with local guides, small groups, and 100% transparent kayaks. Paddle Indian River and Loxahatchee waterways, spot wildlife, and reserve online.",
     siteUrl: "https://www.clearkayakingadventures.com",
   },
 
@@ -30,9 +30,9 @@ export const sampleContent: SiteContent = {
   },
 
   hero: {
-    heading: "Clear Kayaking in Jupiter, Florida",
+    heading: "Clear Kayak Tours in Jupiter, FL",
     subheading:
-      "Glide over crystal-clear water in a 100% transparent kayak. Small-group, guide-led eco tours through Jupiter's bright blue waterways — beginner and family friendly.",
+      "Glide over Jupiter's clear blue waterways in a 100% transparent kayak. Small-group, guide-led eco tours make it easy to spot manatees, sea turtles, rays, and tropical fish from your seat.",
     ctaLabel: "Book Your Clear Kayak Tour",
     image: { src: "", alt: "Crystal-clear kayak gliding over sunlit blue water in Jupiter, Florida" },
     variant: "water",
@@ -257,8 +257,8 @@ export const sampleContent: SiteContent = {
   },
 
   faqSection: {
-    heading: "Frequently Asked Questions",
-    intro: "Everything you need to know before your clear kayak tour in Jupiter.",
+    heading: "Clear Kayak Tour FAQ | Jupiter, FL",
+    intro: "Everything you need to know before your clear kayak tour, adapted from Clear Kayaking Adventures' live FAQ.",
   },
 
   faqs: [
@@ -270,7 +270,7 @@ export const sampleContent: SiteContent = {
     {
       question: "What does the clear kayak tour include?",
       answer:
-        "Every tour includes a 100% clear kayak, paddles, a dry bag, life vests, a safety whistle, and one of our local tour guides. Groups are doubled up with a maximum of 10 guests per tour. Wildlife viewing is available but not guaranteed.",
+        "Every tour includes a 100% clear kayak, paddles, a dry bag, life vests, a safety whistle, and one of our local tour guides. Groups are doubled up and may be placed with the tour guide or as a single depending on availability. Each tour group has no more than 10 guests, and wildlife viewing is available but not guaranteed.",
     },
     {
       question: "Will I see manatees or sea turtles?",
@@ -300,12 +300,17 @@ export const sampleContent: SiteContent = {
     {
       question: "What should I bring on the tour?",
       answer:
-        "Wear a bathing suit and bring polarized sunglasses, reef-safe sunscreen, a water bottle, a towel, and a change of dry clothes.",
+        "We recommend bringing a bathing suit, polarized sunglasses, a bottle of water, and a towel. We also suggest bringing a set of dry clothes in case yours get wet.",
+    },
+    {
+      question: "Should we tip our tour guide?",
+      answer:
+        "Tipping is optional, but guides appreciate gratuity based on the quality of service you receive.",
     },
     {
       question: "What is the cancellation policy?",
       answer:
-        "Full refunds apply for company cancellations or for guest cancellations made 24 or more hours before departure. Cancellations within 24 hours forfeit payment, and no-shows are non-refundable.",
+        "Trips canceled by Clear Kayaking Adventures because of inclement weather will be refunded in full or rescheduled. Guest cancellations made 24 or more hours before tour time can be refunded in full or rescheduled. Reservations canceled within less than 24 hours, no-shows, and late arrivals that miss the scheduled launch are not refunded.",
     },
   ],
 
