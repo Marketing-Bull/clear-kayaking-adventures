@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
 export function Wildlife({ content }: { content: SiteContent }) {
   const { wildlife, wildlifeSection } = content;
   return (
-    <section id="wildlife" className="scroll-mt-24 bg-gradient-to-b from-white to-foam py-16 sm:py-24">
+    <section id="wildlife" className="scroll-mt-24 bg-gradient-to-b from-white to-foam py-14 sm:py-20 lg:py-24">
       <Container>
         <SectionHeading
           center
@@ -16,7 +16,7 @@ export function Wildlife({ content }: { content: SiteContent }) {
           intro={wildlifeSection.intro}
         />
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:mt-12 lg:grid-cols-3">
           {wildlife.map((w) => (
             <article
               key={w.name}
@@ -29,8 +29,8 @@ export function Wildlife({ content }: { content: SiteContent }) {
                 <Media image={w.image} sizes="(max-width:768px) 100vw, 33vw" className="transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-deep/85 via-deep/10 to-transparent" />
               </div>
-              <div className="absolute inset-x-0 bottom-0 p-5 text-white">
-                <div className="flex items-center gap-2">
+              <div className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">
+                <div className="flex flex-wrap items-center gap-2">
                   <h3 className="text-xl font-bold" style={{ color: "#fff" }}>
                     {w.name}
                   </h3>
@@ -46,7 +46,7 @@ export function Wildlife({ content }: { content: SiteContent }) {
           ))}
         </div>
 
-        <p className="mx-auto mt-8 max-w-3xl rounded-2xl bg-ocean/5 px-5 py-4 text-center text-inkmuted">
+        <p className="mx-auto mt-6 max-w-3xl rounded-2xl bg-ocean/5 px-4 py-3.5 text-center text-sm text-inkmuted sm:mt-8 sm:px-5 sm:py-4 sm:text-base">
           <span className="font-semibold text-deep">What you may see: </span>
           {wildlifeSection.disclaimer}
         </p>

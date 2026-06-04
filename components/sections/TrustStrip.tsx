@@ -25,25 +25,27 @@ export function TrustStrip({ content }: { content: SiteContent }) {
   ];
 
   return (
-    <section className="relative z-10 bg-white py-6 shadow-sm ring-1 ring-ocean/10">
+    <section className="relative z-10 bg-white py-5 shadow-sm ring-1 ring-ocean/10 sm:py-7">
       <Container>
         <div className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
-          <div className="grid gap-3 md:grid-cols-3">
+          <div className="grid gap-2.5 md:grid-cols-3 md:gap-3">
             {proof.map((item) => (
-              <div key={item.label} className="rounded-2xl bg-foam px-5 py-4">
+              <div key={item.label} className="rounded-2xl bg-foam px-4 py-3.5 sm:px-5 sm:py-4">
                 <div className="mb-1 flex items-center gap-1 text-sun">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <StarIcon key={index} className="h-4 w-4" />
                   ))}
                 </div>
-                <h2 className="text-lg font-extrabold text-deep">{item.label}</h2>
-                <p className="mt-1 text-sm leading-6 text-inkmuted">{item.body}</p>
+                <h2 className="text-base font-extrabold text-deep sm:text-lg">{item.label}</h2>
+                <p className="mt-1 text-sm leading-5 text-inkmuted sm:leading-6">{item.body}</p>
               </div>
             ))}
           </div>
-          <BookNowButton href={content.site.fareHarborUrl} className="hidden whitespace-nowrap lg:inline-flex">
-            Book Your Clear Kayak Tour
-          </BookNowButton>
+          <div className="hidden lg:block">
+            <BookNowButton href={content.site.fareHarborUrl}>
+              Book Your Clear Kayak Tour
+            </BookNowButton>
+          </div>
         </div>
       </Container>
     </section>

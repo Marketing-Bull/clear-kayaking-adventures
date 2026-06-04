@@ -21,7 +21,7 @@ function TourCard({ tour, site }: { tour: Tour; site: SiteContent["site"] }) {
       <div className="relative aspect-[4/3] overflow-hidden">
         <Media image={tour.image} sizes="(max-width:768px) 100vw, 33vw" className="transition-transform duration-500 group-hover:scale-105" />
       </div>
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex flex-wrap items-center gap-3">
           <h3 className="text-xl font-bold">
             <Link href={`/tours/${tour.slug}`} className="hover:text-ocean">
@@ -44,12 +44,12 @@ function TourCard({ tour, site }: { tour: Tour; site: SiteContent["site"] }) {
           {tour.bookByPhone ? (
             <a
               href={tel}
-              className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-ocean px-5 py-2.5 font-semibold text-white hover:bg-deep"
+              className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-ocean px-5 py-2.5 font-semibold text-white hover:bg-deep sm:w-auto"
             >
               Call to Book
             </a>
           ) : (
-            <BookNowButton href={href}>Book Now</BookNowButton>
+            <BookNowButton href={href} className="w-full sm:w-auto">Book Now</BookNowButton>
           )}
         </div>
       </div>
@@ -65,7 +65,7 @@ export function ToursSection({ content }: { content: SiteContent }) {
   const tel = `tel:${site.phone.replace(/[^0-9]/g, "")}`;
 
   return (
-    <section id="tours" className="scroll-mt-24 py-16 sm:py-24">
+    <section id="tours" className="scroll-mt-24 py-14 sm:py-20 lg:py-24">
       <Container>
         <SectionHeading
           center
@@ -75,11 +75,11 @@ export function ToursSection({ content }: { content: SiteContent }) {
         />
 
         {primary && (
-          <div className="mt-12 grid items-stretch gap-8 overflow-hidden rounded-[2rem] bg-gradient-to-br from-ocean to-deep text-white md:grid-cols-2">
-            <div className="relative min-h-[260px]">
+          <div className="mt-8 grid items-stretch overflow-hidden rounded-2xl bg-gradient-to-br from-ocean to-deep text-white sm:mt-10 sm:rounded-[2rem] md:grid-cols-2 lg:mt-12">
+            <div className="relative min-h-[220px] sm:min-h-[260px]">
               <Media image={primary.image} sizes="(max-width:768px) 100vw, 50vw" className="h-full w-full" />
             </div>
-            <div className="flex flex-col justify-center p-8 sm:p-10">
+            <div className="flex flex-col justify-center p-5 sm:p-8 lg:p-10">
               <span className="mb-3 inline-flex w-fit items-center gap-2 rounded-full bg-sun px-3 py-1 text-sm font-bold uppercase tracking-wide text-white">
                 Most Popular
               </span>
@@ -94,13 +94,13 @@ export function ToursSection({ content }: { content: SiteContent }) {
                   </li>
                 ))}
               </ul>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <BookNowButton href={primary.fareHarborUrl || site.fareHarborUrl} className="text-lg">
+              <div className="mt-6 flex flex-col gap-2.5 sm:mt-7 sm:flex-row sm:flex-wrap sm:gap-3">
+                <BookNowButton href={primary.fareHarborUrl || site.fareHarborUrl} className="w-full sm:w-auto sm:text-lg">
                   Book This Tour
                 </BookNowButton>
                 <Link
                   href={`/tours/${primary.slug}`}
-                  className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-white/10 px-6 py-3 font-semibold text-white ring-1 ring-white/40 hover:bg-white/20"
+                  className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-white/10 px-5 py-3 font-semibold text-white ring-1 ring-white/40 hover:bg-white/20 sm:w-auto sm:px-6"
                 >
                   Tour Details
                 </Link>
@@ -110,12 +110,12 @@ export function ToursSection({ content }: { content: SiteContent }) {
         )}
 
         {onRequest.length > 0 && (
-          <div className="mt-16">
+          <div className="mt-12 sm:mt-14 lg:mt-16">
             <h3 className="text-center text-2xl font-bold">Tours Upon Request</h3>
             <p className="mx-auto mt-2 max-w-2xl text-center text-inkmuted">
               Want something different? These specialty tours run on request — give us a call to schedule.
             </p>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-6 grid gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
               {onRequest.map((t) => (
                 <TourCard key={t.slug} tour={t} site={site} />
               ))}
@@ -124,12 +124,12 @@ export function ToursSection({ content }: { content: SiteContent }) {
         )}
 
         {privateTour && (
-          <div className="mt-12 flex flex-col items-center gap-6 rounded-[2rem] bg-foam p-8 text-center sm:p-12">
+          <div className="mt-10 flex flex-col items-center gap-5 rounded-2xl bg-foam p-5 text-center sm:mt-12 sm:gap-6 sm:rounded-[2rem] sm:p-10 lg:p-12">
             <h3 className="text-2xl font-extrabold sm:text-3xl">{privateTour.name}</h3>
             <p className="max-w-2xl text-lg text-inkmuted">{privateTour.shortDescription}</p>
             <a
               href={tel}
-              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-ocean px-7 py-3 text-lg font-semibold text-white hover:bg-deep"
+              className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-ocean px-6 py-3 text-base font-semibold text-white hover:bg-deep sm:w-auto sm:px-7 sm:text-lg"
             >
               Call {site.phone}
             </a>
