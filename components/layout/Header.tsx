@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { SiteContent } from "@/lib/content/types";
 import { BookNowButton } from "@/components/ui/BookNowButton";
 import { cn } from "@/lib/cn";
@@ -40,16 +41,16 @@ export function Header({ content }: { content: SiteContent }) {
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
-        <Link href="/" className="flex items-center gap-2 font-display text-lg font-extrabold text-deep">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-aqua to-ocean text-white">
-            <span aria-hidden>🛶</span>
-          </span>
-          <span className="leading-tight">
-            Clear Kayaking
-            <span className="block text-xs font-semibold tracking-wide text-lagoon">
-              ADVENTURES · JUPITER, FL
-            </span>
-          </span>
+        <Link href="/" aria-label="Clear Kayaking Adventures — home" className="flex items-center">
+          <Image
+            src="/brand/logo.png"
+            alt="Clear Kayaking Adventures"
+            width={392}
+            height={128}
+            priority
+            unoptimized
+            className="h-11 w-[134px] max-w-none shrink-0 object-contain object-left sm:h-12 sm:w-[146px]"
+          />
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">

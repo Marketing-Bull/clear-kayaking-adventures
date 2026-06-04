@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { SiteContent } from "@/lib/content/types";
 import { Container } from "@/components/ui/Container";
 import { BookNowButton } from "@/components/ui/BookNowButton";
@@ -30,12 +31,14 @@ export function Footer({ content }: { content: SiteContent }) {
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-2 font-display text-xl font-extrabold text-white">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-aqua to-ocean">
-                <span aria-hidden>🛶</span>
-              </span>
-              Clear Kayaking Adventures
-            </div>
+            <Image
+              src="/brand/logo-white.png"
+              alt="Clear Kayaking Adventures"
+              width={392}
+              height={128}
+              unoptimized
+              className="h-14 w-[171px] max-w-none object-contain object-left"
+            />
             <p className="mt-4 max-w-sm text-foam/80">
               100% clear kayak eco tours through Jupiter, Florida&apos;s beautiful
               waterways. Small groups, local guides, unforgettable wildlife.
