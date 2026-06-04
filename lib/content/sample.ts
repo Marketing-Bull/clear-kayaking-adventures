@@ -34,7 +34,10 @@ export const sampleContent: SiteContent = {
     subheading:
       "Glide over Jupiter's clear blue waterways in a 100% transparent kayak. Small-group, guide-led eco tours make it easy to spot manatees, sea turtles, rays, and tropical fish from your seat.",
     ctaLabel: "Book Your Clear Kayak Tour",
-    image: { src: "", alt: "Crystal-clear kayak gliding over sunlit blue water in Jupiter, Florida" },
+    image: {
+      src: "/images/tours/clear-kayak-guests.webp",
+      alt: "Guests paddling a transparent kayak beside Jupiter mangroves",
+    },
     variant: "water",
   },
 
@@ -83,7 +86,10 @@ export const sampleContent: SiteContent = {
         "Dry bag & safety whistle",
         "Local, educationally oriented guide",
       ],
-      image: { src: "", alt: "Guided clear kayak eco tour paddling past Jupiter mangroves" },
+      image: {
+        src: "/images/tours/clear-kayak-guests.webp",
+        alt: "Guided clear kayak eco tour paddling past Jupiter mangroves",
+      },
       featured: true,
     },
     {
@@ -96,7 +102,10 @@ export const sampleContent: SiteContent = {
       ],
       startTime: "6:00 PM",
       whatsIncluded: ["100% clear tandem kayak", "Paddles & life vests", "Dry bag & safety whistle", "Local guide"],
-      image: { src: "", alt: "Clear kayak sunset tour on Jupiter's water at golden hour" },
+      image: {
+        src: "/images/tours/sunset-clear-kayak.webp",
+        alt: "View from a clear kayak across Jupiter's water at sunset",
+      },
       bookByPhone: true,
     },
     {
@@ -108,7 +117,10 @@ export const sampleContent: SiteContent = {
         "Built for confident paddlers, the Pro Run covers more distance at a quicker pace. Stretch your arms, cover more of Jupiter's waterways, and still enjoy the clear-kayak view below.",
       ],
       whatsIncluded: ["100% clear tandem kayak", "Paddles & life vests", "Dry bag & safety whistle", "Local guide"],
-      image: { src: "", alt: "Pro Run clear kayak tour covering distance on Jupiter waterways" },
+      image: {
+        src: "/images/tours/clear-kayaks-launch.webp",
+        alt: "Two transparent kayaks prepared at the water's edge",
+      },
       bookByPhone: true,
     },
     {
@@ -120,7 +132,10 @@ export const sampleContent: SiteContent = {
         "Paddle the legendary Indian River Lagoon, home to manatees, dolphins, wading birds, and seagrass meadows. A clear-kayak tour through one of the most diverse ecosystems in the country.",
       ],
       whatsIncluded: ["100% clear tandem kayak", "Paddles & life vests", "Dry bag & safety whistle", "Local guide"],
-      image: { src: "", alt: "Clear kayak tour exploring the Indian River Lagoon near Jupiter" },
+      image: {
+        src: "/images/tours/mangrove-paddle.webp",
+        alt: "View from a transparent kayak approaching mangroves",
+      },
       bookByPhone: true,
     },
     {
@@ -132,7 +147,10 @@ export const sampleContent: SiteContent = {
         "Drift over saltwater flats where snook, tarpon, rays, and schools of baitfish move beneath your clear hull. A favorite for guests who love watching marine life up close.",
       ],
       whatsIncluded: ["100% clear tandem kayak", "Paddles & life vests", "Dry bag & safety whistle", "Local guide"],
-      image: { src: "", alt: "Salt Fish clear kayak tour over Jupiter saltwater flats" },
+      image: {
+        src: "/images/tours/salt-fish-clear-kayak.webp",
+        alt: "Clear kayak gliding over fish and a ray on Jupiter saltwater flats",
+      },
       bookByPhone: true,
     },
     {
@@ -145,7 +163,10 @@ export const sampleContent: SiteContent = {
         "Celebrating something special? Private tours are fully customizable for birthdays, proposals, team outings, group parties, and church groups. Give us a call and we'll build the perfect clear-kayak experience for your group.",
       ],
       whatsIncluded: ["Dedicated private guide", "100% clear tandem kayaks", "Flexible scheduling", "Custom group experience"],
-      image: { src: "", alt: "Private group clear kayak tour in Jupiter" },
+      image: {
+        src: "/images/tours/private-clear-kayak-tour.webp",
+        alt: "Private family clear kayak tour paddling beside Jupiter mangroves",
+      },
       bookByPhone: true,
     },
   ],
@@ -163,35 +184,53 @@ export const sampleContent: SiteContent = {
       name: "Manatees",
       blurb:
         "Gentle giants frequent the calm, shallow canals and Intracoastal waters of Jupiter, especially in the cooler months. Spotting one beneath a clear kayak is unforgettable.",
-      image: { src: "", alt: "Manatee swimming beneath clear water in Jupiter" },
+      image: {
+        src: "/images/wildlife/manatee.webp",
+        alt: "Manatee swimming beneath clear water in Jupiter",
+      },
       highlight: true,
     },
     {
       name: "Sea Turtles",
       blurb:
         "Jupiter is a sea turtle haven. Keep your eyes on the seagrass beds — greens and loggerheads glide through these waters and surface for air.",
-      image: { src: "", alt: "Sea turtle swimming over seagrass near Jupiter" },
+      image: {
+        src: "/images/wildlife/sea-turtle.webp",
+        alt: "Sea turtle swimming over seagrass near Jupiter",
+      },
       highlight: true,
     },
     {
       name: "Rays",
       blurb: "Watch eagle rays and stingrays soar across the sandy bottom right below your clear hull.",
-      image: { src: "", alt: "Ray gliding over sandy bottom in clear Jupiter water" },
+      image: {
+        src: "/images/wildlife/ray.webp",
+        alt: "Ray gliding over sandy bottom in clear Jupiter water",
+      },
     },
     {
       name: "Tropical Fish",
       blurb: "Snook, mullet, needlefish, and colorful schools dart through the seagrass and mangrove roots.",
-      image: { src: "", alt: "School of tropical fish in clear Jupiter water" },
+      image: {
+        src: "/images/wildlife/tropical-fish.webp",
+        alt: "School of coastal fish swimming through Jupiter seagrass",
+      },
     },
     {
       name: "Coastal Birds",
       blurb: "Pelicans, herons, ospreys, and the occasional owl patrol the mangroves and shorelines.",
-      image: { src: "", alt: "Pelicans and herons along Jupiter's mangrove shoreline" },
+      image: {
+        src: "/images/wildlife/coastal-birds.webp",
+        alt: "Pelican and great blue heron along a Jupiter mangrove shoreline",
+      },
     },
     {
       name: "Mangrove Tunnels",
       blurb: "Paddle through shady mangrove tunnels — the nurseries of the lagoon and home to countless species.",
-      image: { src: "", alt: "Clear kayak paddling through a mangrove tunnel in Jupiter" },
+      image: {
+        src: "/images/wildlife/mangrove-tunnel.webp",
+        alt: "Shaded mangrove path opening onto Jupiter's blue water",
+      },
     },
   ],
 
@@ -254,6 +293,10 @@ export const sampleContent: SiteContent = {
     body: "If you're looking for a truly memorable gift, a Clear Kayaking Adventures gift card is the perfect choice. Give an unforgettable experience — a guided eco tour in a 100% clear kayak on Jupiter's beautiful waterways.",
     ctaLabel: "Purchase a Gift Card",
     ctaUrl: FAREHARBOR_URL,
+    image: {
+      src: "/images/tours/clear-kayak-guests.webp",
+      alt: "Clear kayak adventure paddling beside Jupiter mangroves",
+    },
   },
 
   faqSection: {

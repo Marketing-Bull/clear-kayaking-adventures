@@ -91,7 +91,7 @@ export type SiteContent = {
   howItWorksSection: { heading: string; intro: string; steps: HowItWorksStep[] };
   reviewsSection: { heading: string; subheading: string };
   reviews: Review[];
-  giftCard: { heading: string; body: string; ctaLabel: string; ctaUrl: string };
+  giftCard: { heading: string; body: string; ctaLabel: string; ctaUrl: string; image?: Img };
   faqSection: { heading: string; intro: string };
   faqs: Faq[];
   locationsSection: { heading: string; intro: string };

@@ -20,7 +20,7 @@ export function Hero({ content }: { content: SiteContent }) {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_70%_15%,rgba(70,207,214,0.36),transparent_34%),radial-gradient(circle_at_20%_20%,rgba(255,176,102,0.28),transparent_26%)]" />
 
       <div className="mx-auto w-full max-w-6xl px-4 py-10 pb-24 sm:px-6 sm:py-20 lg:px-8">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl rounded-3xl bg-deep/25 p-4 backdrop-blur-[2px] sm:p-6 lg:p-8">
           <div className="mb-4 inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-2xl bg-white/15 px-3 py-2 text-xs font-semibold text-white ring-1 ring-white/30 backdrop-blur sm:mb-5 sm:rounded-full sm:px-4 sm:text-sm">
             <span className="flex shrink-0" aria-hidden>
               {Array.from({ length: 5 }).map((_, i) => (
@@ -36,7 +36,7 @@ export function Hero({ content }: { content: SiteContent }) {
           <h1 className="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl" style={{ color: "#fff" }}>
             {hero.heading}
           </h1>
-          <p className="mt-4 max-w-2xl text-lg font-medium text-foam/95 sm:mt-5 sm:text-xl lg:text-2xl">
+          <p className="mt-4 max-w-2xl text-lg font-medium text-white/95 sm:mt-5 sm:text-xl lg:text-2xl">
             {hero.subheading}
           </p>
 
