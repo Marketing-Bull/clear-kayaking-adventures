@@ -26,7 +26,6 @@ export function Reviews({ content }: { content: SiteContent }) {
           <div className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-2xl bg-white/10 px-4 py-2 ring-1 ring-white/20 sm:rounded-full sm:px-5">
             <Stars rating={5} />
             <span className="text-lg font-bold text-white">{avg}</span>
-            <span className="text-foam/80">· {reviews.length} reviews</span>
           </div>
         </div>
 

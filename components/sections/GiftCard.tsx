@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { SiteContent } from "@/lib/content/types";
 import { Container } from "@/components/ui/Container";
 import { BookNowButton } from "@/components/ui/BookNowButton";
+import { Media } from "@/components/ui/Media";
 import { GiftIcon } from "@/components/ui/icons";
 
 export function GiftCard({ content }: { content: SiteContent }) {
@@ -9,7 +10,7 @@ export function GiftCard({ content }: { content: SiteContent }) {
   return (
     <section id="gift" className="scroll-mt-24 py-14 sm:py-20 lg:py-24">
       <Container>
-        <div className="grid items-center gap-8 rounded-2xl bg-gradient-to-br from-lagoon/10 to-aqua/10 p-5 sm:gap-10 sm:rounded-[2rem] sm:p-10 lg:grid-cols-2 lg:p-12">
+        <div className="grid items-center gap-8 rounded-2xl bg-gradient-to-br from-lagoon/10 to-aqua/10 p-5 sm:gap-10 sm:rounded-[2rem] sm:p-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:p-12">
           <div>
             <p className="mb-3 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-lagoon">
               <GiftIcon className="h-5 w-5" /> The Perfect Gift
@@ -23,20 +24,22 @@ export function GiftCard({ content }: { content: SiteContent }) {
             </div>
           </div>
 
-          {/* Gift card visual */}
-          <div className="mx-auto w-full max-w-md">
-            <div className="relative aspect-[1.6/1] overflow-hidden rounded-2xl bg-gradient-to-br from-deep via-ocean to-lagoon p-4 text-white shadow-2xl shadow-ocean/30 sm:rounded-3xl sm:p-7">
-              <div
-                className="pointer-events-none absolute inset-0 opacity-30"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(120% 100% at 10% 0%, rgba(255,255,255,.45), transparent 45%)",
-                }}
-                aria-hidden
-              />
-              <div className="relative flex h-full flex-col justify-between">
-                <div className="flex items-start justify-between">
-                  <div className="rounded-lg bg-white/95 px-2 py-1.5">
+          <div className="mx-auto w-full max-w-xl">
+            <div className="overflow-hidden rounded-[2rem] bg-deep shadow-2xl shadow-ocean/30 ring-1 ring-white/10">
+              <div className="relative aspect-[4/3] sm:aspect-[16/10]">
+                <Media
+                  image={
+                    giftCard.image ?? {
+                      src: "/images/tours/clear-kayak-guests.webp",
+                      alt: "Clear kayak adventure paddling beside Jupiter mangroves",
+                    }
+                  }
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="h-full w-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-deep/90 via-deep/35 to-transparent" />
+                <div className="absolute inset-x-4 top-4 flex items-start justify-between gap-3 sm:inset-x-6 sm:top-6">
+                  <div className="rounded-2xl bg-white/95 px-3 py-2 shadow-lg shadow-black/20">
                     <Image
                       src="/clear-kayaking-adventures-logo.png"
                       alt="Clear Kayaking Adventures"
@@ -45,16 +48,18 @@ export function GiftCard({ content }: { content: SiteContent }) {
                       className="h-7 w-auto sm:h-10"
                     />
                   </div>
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-foam/70">Gift Card</p>
-                  <p className="font-display text-lg font-extrabold min-[380px]:text-xl sm:text-3xl">An Unforgettable Adventure</p>
-                </div>
-                <div className="flex items-end justify-between gap-2 text-[0.65rem] text-foam/80 sm:text-sm">
-                  <span>Jupiter, Florida</span>
-                  <span className="rounded bg-white/15 px-2 py-1 font-mono tracking-widest">
-                    GIFT
+                  <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white ring-1 ring-white/25 backdrop-blur">
+                    Gift Card
                   </span>
+                </div>
+                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6">
+                  <div className="max-w-md rounded-3xl bg-deep/70 p-4 text-white ring-1 ring-white/10 backdrop-blur sm:p-5">
+                    <p className="text-xs uppercase tracking-[0.24em] text-foam/75">An Unforgettable Adventure</p>
+                    <p className="mt-1 font-display text-xl font-extrabold sm:text-3xl">Clear kayak tours on Jupiter&apos;s waterways</p>
+                    <p className="mt-2 text-sm leading-relaxed text-foam/85">
+                      Transparent kayaks, local guides, and a front-row seat to Florida&apos;s mangroves and wildlife.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

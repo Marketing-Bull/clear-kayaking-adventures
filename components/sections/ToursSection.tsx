@@ -124,15 +124,20 @@ export function ToursSection({ content }: { content: SiteContent }) {
         )}
 
         {privateTour && (
-          <div className="mt-10 flex flex-col items-center gap-5 rounded-2xl bg-foam p-5 text-center sm:mt-12 sm:gap-6 sm:rounded-[2rem] sm:p-10 lg:p-12">
-            <h3 className="text-2xl font-extrabold sm:text-3xl">{privateTour.name}</h3>
-            <p className="max-w-2xl text-lg text-inkmuted">{privateTour.shortDescription}</p>
-            <a
-              href={tel}
-              className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-ocean px-6 py-3 text-base font-semibold text-white hover:bg-deep sm:w-auto sm:px-7 sm:text-lg"
-            >
-              Call {site.phone}
-            </a>
+          <div className="mt-10 grid overflow-hidden rounded-2xl bg-foam sm:mt-12 sm:rounded-[2rem] md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+            <div className="relative min-h-[240px] sm:min-h-[320px]">
+              <Media image={privateTour.image} sizes="(max-width:768px) 100vw, 55vw" className="h-full w-full" />
+            </div>
+            <div className="flex flex-col items-center justify-center gap-5 p-5 text-center sm:gap-6 sm:p-10 lg:p-12">
+              <h3 className="text-2xl font-extrabold sm:text-3xl">{privateTour.name}</h3>
+              <p className="max-w-2xl text-lg text-inkmuted">{privateTour.shortDescription}</p>
+              <a
+                href={tel}
+                className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-ocean px-6 py-3 text-base font-semibold text-white hover:bg-deep sm:w-auto sm:px-7 sm:text-lg"
+              >
+                Call {site.phone}
+              </a>
+            </div>
           </div>
         )}
       </Container>
