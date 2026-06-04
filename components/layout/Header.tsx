@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import type { SiteContent } from "@/lib/content/types";
 import { BookNowButton } from "@/components/ui/BookNowButton";
@@ -45,16 +46,15 @@ export function Header({ content }: { content: SiteContent }) {
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-2.5 sm:gap-4 sm:px-6 sm:py-3 lg:px-8">
-        <Link href="/" className="flex shrink-0 items-center gap-2 font-display text-base font-extrabold text-deep sm:text-lg">
-          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-aqua to-ocean text-white">
-            <span aria-hidden>🛶</span>
-          </span>
-          <span className="min-w-0 leading-tight">
-            Clear Kayaking
-            <span className="hidden text-[0.65rem] font-semibold tracking-wide text-lagoon min-[360px]:block sm:text-xs">
-              ADVENTURES · JUPITER, FL
-            </span>
-          </span>
+        <Link href="/" aria-label="Clear Kayaking Adventures home" className="shrink-0">
+          <Image
+            src="/clear-kayaking-adventures-logo.png"
+            alt="Clear Kayaking Adventures"
+            width={1500}
+            height={580}
+            priority
+            className="h-11 w-auto sm:h-13"
+          />
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">

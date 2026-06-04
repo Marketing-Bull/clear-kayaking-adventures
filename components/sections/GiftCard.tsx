@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { SiteContent } from "@/lib/content/types";
 import { Container } from "@/components/ui/Container";
 import { BookNowButton } from "@/components/ui/BookNowButton";
@@ -35,13 +36,15 @@ export function GiftCard({ content }: { content: SiteContent }) {
               />
               <div className="relative flex h-full flex-col justify-between">
                 <div className="flex items-start justify-between">
-                  <div className="font-display text-sm font-extrabold leading-tight sm:text-lg">
-                    Clear Kayaking
-                    <span className="block text-xs font-semibold tracking-widest text-aqua">
-                      ADVENTURES
-                    </span>
+                  <div className="rounded-lg bg-white/95 px-2 py-1.5">
+                    <Image
+                      src="/clear-kayaking-adventures-logo.png"
+                      alt="Clear Kayaking Adventures"
+                      width={1500}
+                      height={580}
+                      className="h-7 w-auto sm:h-10"
+                    />
                   </div>
-                  <span aria-hidden className="text-2xl sm:text-3xl">🛶</span>
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-[0.2em] text-foam/70">Gift Card</p>
