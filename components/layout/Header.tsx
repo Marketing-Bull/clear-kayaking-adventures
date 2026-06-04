@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import type { SiteContent } from "@/lib/content/types";
 import { BookNowButton } from "@/components/ui/BookNowButton";
@@ -28,6 +29,11 @@ export function Header({ content }: { content: SiteContent }) {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    document.body.classList.toggle("menu-open", open);
+    return () => {
+      document.body.style.overflow = "";
+      document.body.classList.remove("menu-open");
+    };
   }, [open]);
 
   return (
@@ -39,17 +45,16 @@ export function Header({ content }: { content: SiteContent }) {
           : "bg-white/80 backdrop-blur"
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
-        <Link href="/" className="flex items-center gap-2 font-display text-lg font-extrabold text-deep">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-aqua to-ocean text-white">
-            <span aria-hidden>🛶</span>
-          </span>
-          <span className="leading-tight">
-            Clear Kayaking
-            <span className="block text-xs font-semibold tracking-wide text-lagoon">
-              ADVENTURES · JUPITER, FL
-            </span>
-          </span>
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-2.5 sm:gap-4 sm:px-6 sm:py-3 lg:px-8">
+        <Link href="/" aria-label="Clear Kayaking Adventures home" className="shrink-0">
+          <Image
+            src="/clear-kayaking-adventures-logo.png"
+            alt="Clear Kayaking Adventures"
+            width={1500}
+            height={580}
+            priority
+            className="h-11 w-auto sm:h-13"
+          />
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
@@ -73,7 +78,7 @@ export function Header({ content }: { content: SiteContent }) {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="grid h-11 w-11 place-items-center rounded-lg text-deep lg:hidden"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-lg text-deep lg:hidden"
         >
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             {open ? (
@@ -93,8 +98,8 @@ export function Header({ content }: { content: SiteContent }) {
       </div>
 
       {open && (
-        <div className="lg:hidden">
-          <nav className="flex flex-col gap-1 border-t border-foam bg-white px-5 pb-6 pt-2">
+        <div className="max-h-[calc(100svh-6.25rem)] overflow-y-auto lg:hidden">
+          <nav className="flex flex-col gap-1 border-t border-foam bg-white px-4 pb-5 pt-2 sm:px-6">
             {NAV.map((item) => (
               <Link
                 key={item.href}
