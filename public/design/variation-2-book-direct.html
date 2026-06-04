@@ -114,12 +114,23 @@
   @media(max-width:860px){.tgrid{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.tgrid{grid-template-columns:1fr}}
 
+  /* HOW IT WORKS */
+  .hiw{padding:80px 0;background:#fff}
+  .hiw-in{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .hiw h2{font-size:clamp(1.8rem,4vw,2.5rem);text-align:center;margin-bottom:8px}
+  .hiw .sub{text-align:center;color:var(--muted);margin-bottom:40px}
+  .step{border:1px solid #e3ebef;border-radius:18px;padding:30px 26px;position:relative}
+  .step .num{width:48px;height:48px;border-radius:12px;background:var(--ocean);color:#fff;font-family:var(--display);font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .step h4{font-size:1.15rem;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.95rem}
+  @media(max-width:760px){.hiw-in{grid-template-columns:1fr;gap:14px}}
+
   /* wildlife quick band */
   .seeband{padding:64px 0;text-align:center}
   .seeband h2{font-size:clamp(1.6rem,3.6vw,2.2rem);margin-bottom:10px}
   .seeband p.d{color:var(--muted);max-width:56ch;margin:0 auto 28px;font-size:.95rem}
   .chips{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-  .chip{background:var(--foam);border-radius:14px;padding:14px 18px;font-weight:700;display:flex;gap:8px;align-items:center}
+  .chip{background:var(--foam);border-radius:14px;padding:14px 18px;font-weight:700;display:flex;gap:8px;align-items:center;color:var(--ink)}
   .chip.fav{background:linear-gradient(135deg,var(--sunsoft),var(--sun));color:#fff}
 
   /* reviews */
@@ -298,6 +309,30 @@
   </div>
 </section>
 
+<section class="hiw">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="sub">Three steps from booking to paddling.</p>
+    <div class="hiw-in">
+      <div class="step">
+        <div class="num">1</div>
+        <h4>Reserve Online</h4>
+        <p>Book direct — no third-party fees, instant confirmation. Groups stay small (max 10), always.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h4>Arrive &amp; Gear Up</h4>
+        <p>Meet your local Jupiter guide at the launch point. We handle life vests, paddles and a quick safety briefing.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h4>Paddle &amp; See</h4>
+        <p>Glide over seagrass and mangroves in your clear kayak. Your guide knows exactly where the wildlife gathers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="seeband">
   <div class="wrap">
     <span class="pill" style="margin-bottom:12px">What you may see</span>
@@ -340,7 +375,7 @@
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <h5 style="margin-bottom:14px"><img src="/brand/logo-white.png" alt="Clear Kayaking Adventures" style="height:58px;width:auto;max-width:none;display:block" /></h5>
+        <div style="margin-bottom:14px"><img src="/brand/logo-white.png" alt="Clear Kayaking Adventures" style="height:58px;width:auto;max-width:none;display:block" /></div>
         <p style="max-width:32ch">Locally owned clear-kayak eco tours in Jupiter, FL. Book direct and keep it local.</p>
       </div>
       <div><h5>Tours</h5><a href="#tours">Eco Tour</a><a href="#tours">Sunset</a><a href="#tours">Indian River</a><a href="#tours">Private &amp; Group</a></div>

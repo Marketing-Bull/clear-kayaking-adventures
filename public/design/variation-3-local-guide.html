@@ -126,6 +126,20 @@
   details[open] summary::after{content:"–"}
   details p{color:var(--muted);padding-bottom:16px;font-size:1rem}
 
+  /* REVIEWS */
+  .reviews{padding:80px 0;background:var(--deep);color:#fff}
+  .reviews h2{color:#fff;font-size:clamp(1.9rem,4vw,2.6rem);text-align:center;margin-bottom:6px}
+  .reviews .sub{text-align:center;color:#bfe0d6;margin-bottom:36px}
+  .ravg{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:8px 18px;border-radius:999px;font-size:.92rem;font-weight:600;color:#fff;margin-bottom:34px}
+  .stars{color:#ffce5a;letter-spacing:1px}
+  .qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .qc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:26px}
+  .qc .stars{margin-bottom:10px}
+  .qc p{color:#dceee7;font-size:.97rem;margin-bottom:14px;line-height:1.55}
+  .qc .who{font-weight:700;font-size:.9rem;color:#fff}
+  .qc .src{color:#8fb8a8;font-size:.82rem}
+  @media(max-width:820px){.qgrid{grid-template-columns:1fr}}
+
   .final{padding:84px 0;text-align:center;background:linear-gradient(135deg,var(--moss),var(--lagoon));color:#fff}
   .final h2{color:#fff;font-size:clamp(2rem,4.6vw,3rem);max-width:18ch;margin:0 auto 12px}
   .final p{color:#e3f3ec;margin-bottom:26px}
@@ -282,6 +296,21 @@
   </div>
 </section>
 
+<section class="reviews">
+  <div class="wrap">
+    <h2>What guests are saying</h2>
+    <p class="sub">Real paddlers, real reviews.</p>
+    <div style="text-align:center">
+      <div class="ravg"><span class="stars">★★★★★</span> 5.0 on Google &amp; FareHarbor</div>
+    </div>
+    <div class="qgrid">
+      <div class="qc"><div class="stars">★★★★★</div><p>"Our guide knew every inch of the water — we saw two manatees and a sea turtle. You can see everything through the kayak. Worth every minute."</p><div class="who">Sarah M.</div><div class="src">Google review</div></div>
+      <div class="qc"><div class="stars">★★★★★</div><p>"Took the kids and they were mesmerized. Small group, super relaxed, and we actually learned about the lagoon. Beats the bigger tours every time."</p><div class="who">James R.</div><div class="src">FareHarbor review</div></div>
+      <div class="qc"><div class="stars">★★★★★</div><p>"Sunset tour was unreal. Local, friendly, and you can tell they genuinely care about the water. Booked again before we'd even left the dock."</p><div class="who">Priya &amp; Dev</div><div class="src">Google review</div></div>
+    </div>
+  </div>
+</section>
+
 <section class="final" id="book">
   <div class="wrap">
     <h2>Come learn the water with a local</h2>
@@ -294,7 +323,7 @@
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <h5 style="margin-bottom:14px"><img src="/brand/logo-white.png" alt="Clear Kayaking Adventures" style="height:58px;width:auto;max-width:none;display:block" /></h5>
+        <div style="margin-bottom:14px"><img src="/brand/logo-white.png" alt="Clear Kayaking Adventures" style="height:58px;width:auto;max-width:none;display:block" /></div>
         <p style="max-width:38ch">Locally owned, naturalist-led clear kayak eco tours in Jupiter, Florida — on the Indian River Lagoon &amp; Loxahatchee River.</p>
       </div>
       <div><h5>Explore</h5><a href="#wild">Wildlife</a><a href="#launch">Where We Launch</a><a href="#tours">Tours</a><a href="#faq">FAQ</a></div>

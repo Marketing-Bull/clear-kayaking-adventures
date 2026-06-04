@@ -70,14 +70,14 @@
   .pillars{background:var(--foam);padding:96px 0}
   .pillar{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:72px}
   .pillar:last-child{margin-bottom:0}
-  .pillar:nth-child(even) .pcopy{order:2}
+  .pillar:nth-child(even) .pthumb{order:2}
   .pthumb{aspect-ratio:4/3;border-radius:22px;background:linear-gradient(150deg,var(--ocean),var(--aqua));position:relative;overflow:hidden;box-shadow:0 30px 60px -30px rgba(7,49,74,.5)}
   .pthumb span{position:absolute;left:24px;bottom:20px;font-size:3.4rem}
   .pthumb.alt{background:linear-gradient(150deg,var(--lagoon),#7fe3c7)}
   .pthumb.alt2{background:linear-gradient(150deg,var(--deep),var(--ocean))}
   .pcopy h3{font-size:1.9rem;margin:10px 0 12px}
   .pcopy p{color:var(--muted);font-size:1.08rem}
-  @media(max-width:760px){.pillar{grid-template-columns:1fr;gap:22px}.pillar:nth-child(even) .pcopy{order:0}}
+  @media(max-width:760px){.pillar{grid-template-columns:1fr;gap:22px}.pillar:nth-child(even) .pthumb{order:0}}
 
   /* TOURS strip */
   .tours{padding:100px 0}
@@ -115,6 +115,19 @@
   .disclaimer{margin-top:30px;font-size:.92rem;color:#9fc6d6;max-width:70ch}
   @media(max-width:760px){.wgrid{grid-template-columns:1fr 1fr}}
   @media(max-width:480px){.wgrid{grid-template-columns:1fr}}
+
+  /* HOW IT WORKS */
+  .hiw{padding:100px 0;background:#fff}
+  .hiw .head{text-align:center;margin-bottom:60px}
+  .hiw h2{font-size:clamp(2rem,4.5vw,3rem)}
+  .hiw .head p{color:var(--muted);margin-top:14px;font-size:1.08rem;max-width:52ch;margin-left:auto;margin-right:auto}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+  .steps::before{content:"";position:absolute;top:44px;left:calc(16.66% + 12px);right:calc(16.66% + 12px);height:2px;background:linear-gradient(90deg,var(--lagoon),var(--aqua));opacity:.4;pointer-events:none}
+  .step{text-align:center;padding:32px 22px;border-radius:22px;background:var(--foam);position:relative}
+  .step .num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--ocean),var(--lagoon));color:#fff;font-family:var(--display);font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+  .step h4{font-family:var(--display);font-size:1.25rem;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.97rem}
+  @media(max-width:720px){.steps{grid-template-columns:1fr;gap:16px}.steps::before{display:none}}
 
   /* REVIEWS */
   .reviews{padding:100px 0;background:var(--sand);text-align:center}
@@ -261,6 +274,33 @@
   </div>
 </section>
 
+<section class="hiw">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Getting on the water</div>
+      <h2>How it works</h2>
+      <p>Three steps to your clear kayak adventure — from booking to paddling.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h4>Reserve Online</h4>
+        <p>Pick your tour, choose a date and book direct — no fees, instant confirmation. Groups of 10 or fewer guaranteed.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h4>Arrive &amp; Check In</h4>
+        <p>Meet your local guide at the launch point. We'll fit you with a life vest, hand you a paddle, and give a quick safety briefing.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h4>Paddle &amp; Explore</h4>
+        <p>Glide out over the seagrass in your clear kayak. Your guide leads the way — and points out what's moving beneath you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="reviews" id="reviews">
   <div class="wrap">
     <div class="eyebrow">What Our Guests Are Saying</div>
@@ -287,7 +327,7 @@
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <h5 style="margin-bottom:14px"><img src="/brand/logo-white.png" alt="Clear Kayaking Adventures" style="height:58px;width:auto;max-width:none;display:block" /></h5>
+        <div style="margin-bottom:14px"><img src="/brand/logo-white.png" alt="Clear Kayaking Adventures" style="height:58px;width:auto;max-width:none;display:block" /></div>
         <p style="max-width:36ch">Locally owned clear-kayak eco tours in Jupiter, Florida. Launching on the Indian River Lagoon &amp; Loxahatchee River.</p>
         <a class="btn btn-sun" style="margin-top:18px" href="#book">Book Now</a>
       </div>
