@@ -36,15 +36,14 @@ export function GiftCard({ content }: { content: SiteContent }) {
               />
               <div className="relative flex h-full flex-col justify-between">
                 <div className="flex items-start justify-between">
-                  <div className="rounded-lg bg-white/95 px-2 py-1.5">
-                    <Image
-                      src="/clear-kayaking-adventures-logo.png"
-                      alt="Clear Kayaking Adventures"
-                      width={1500}
-                      height={580}
-                      className="h-7 w-auto sm:h-10"
-                    />
-                  </div>
+                  <Image
+                    src="/brand/logo-white.png"
+                    alt="Clear Kayaking Adventures"
+                    width={392}
+                    height={128}
+                    unoptimized
+                    className="h-9 w-[110px] max-w-none object-contain object-left"
+                  />
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-[0.2em] text-foam/70">Gift Card</p>

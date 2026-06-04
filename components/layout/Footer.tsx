@@ -31,15 +31,14 @@ export function Footer({ content }: { content: SiteContent }) {
       <Container className="py-10 sm:py-14">
         <div className="grid gap-8 sm:gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <div className="inline-flex rounded-2xl bg-white px-4 py-2">
-              <Image
-                src="/clear-kayaking-adventures-logo.png"
-                alt="Clear Kayaking Adventures"
-                width={1500}
-                height={580}
-                className="h-16 w-auto"
-              />
-            </div>
+            <Image
+              src="/brand/logo-white.png"
+              alt="Clear Kayaking Adventures"
+              width={392}
+              height={128}
+              unoptimized
+              className="h-14 w-[171px] max-w-none object-contain object-left"
+            />
             <p className="mt-4 max-w-sm text-foam/80">
               100% clear kayak eco tours through Jupiter, Florida&apos;s beautiful
               waterways. Small groups, local guides, unforgettable wildlife.

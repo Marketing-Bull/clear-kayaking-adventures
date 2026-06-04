@@ -46,14 +46,15 @@ export function Header({ content }: { content: SiteContent }) {
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-2.5 sm:gap-4 sm:px-6 sm:py-3 lg:px-8">
-        <Link href="/" aria-label="Clear Kayaking Adventures home" className="shrink-0">
+        <Link href="/" aria-label="Clear Kayaking Adventures — home" className="flex shrink-0 items-center">
           <Image
-            src="/clear-kayaking-adventures-logo.png"
+            src="/brand/logo.png"
             alt="Clear Kayaking Adventures"
-            width={1500}
-            height={580}
+            width={392}
+            height={128}
             priority
-            className="h-11 w-auto sm:h-13"
+            unoptimized
+            className="h-11 w-[134px] max-w-none object-contain object-left sm:h-12 sm:w-[146px]"
           />
         </Link>
 
