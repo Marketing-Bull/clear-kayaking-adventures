@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { variations } from "@/lib/showcase";
 import { PreviewFrame } from "@/components/showcase/PreviewFrame";
 
@@ -23,8 +24,16 @@ export default function ShowcasePage() {
       {/* top bar */}
       <header className="border-b border-black/5 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-          <div className="flex items-center gap-2 font-display text-lg font-extrabold text-deep">
-            🛶 Clear Kayaking
+          <div className="flex items-center gap-3">
+            <Image
+              src="/brand/logo.png"
+              alt="Clear Kayaking Adventures"
+              width={392}
+              height={128}
+              priority
+              unoptimized
+              className="h-9 w-[110px] max-w-none shrink-0 object-contain object-left sm:h-10 sm:w-[122px]"
+            />
             <span className="hidden text-xs font-semibold uppercase tracking-widest text-lagoon sm:inline">
               · Design Showcase
             </span>

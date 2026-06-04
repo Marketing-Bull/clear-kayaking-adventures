@@ -19,23 +19,23 @@ export function Reviews({ content }: { content: SiteContent }) {
   const avg = (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1);
 
   return (
-    <section id="reviews" className="scroll-mt-24 bg-deep py-16 text-white sm:py-24">
+    <section id="reviews" className="scroll-mt-24 bg-deep py-14 text-white sm:py-20 lg:py-24">
       <Container>
         <div className="flex flex-col items-center gap-4 text-center">
           <SectionHeading center light eyebrow="5-Star Experiences" title={reviewsSection.heading} intro={reviewsSection.subheading} />
-          <div className="inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 ring-1 ring-white/20">
+          <div className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-2xl bg-white/10 px-4 py-2 ring-1 ring-white/20 sm:rounded-full sm:px-5">
             <Stars rating={5} />
             <span className="text-lg font-bold text-white">{avg}</span>
             <span className="text-foam/80">· {reviews.length} reviews</span>
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:mt-12 lg:grid-cols-3">
           {reviews.map((r, i) => (
-            <figure key={i} className="flex flex-col rounded-3xl bg-white/5 p-6 ring-1 ring-white/10 backdrop-blur">
+            <figure key={i} className="flex flex-col rounded-2xl bg-white/5 p-5 ring-1 ring-white/10 backdrop-blur sm:rounded-3xl sm:p-6">
               <Stars rating={r.rating} />
               <blockquote className="mt-4 flex-1 text-foam/90">&ldquo;{r.text}&rdquo;</blockquote>
-              <figcaption className="mt-5 flex items-center justify-between">
+              <figcaption className="mt-5 flex flex-wrap items-center justify-between gap-2">
                 <span className="font-semibold text-white">{r.author}</span>
                 <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-xs uppercase tracking-wide text-foam/70">
                   {r.source}

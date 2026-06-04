@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { SiteContent } from "@/lib/content/types";
 import { Container } from "@/components/ui/Container";
@@ -26,16 +27,18 @@ export function Footer({ content }: { content: SiteContent }) {
   const { site } = content;
   const tel = `tel:${site.phone.replace(/[^0-9]/g, "")}`;
   return (
-    <footer className="mt-4 bg-deep text-foam">
-      <Container className="py-14">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
+    <footer className="bg-deep text-foam">
+      <Container className="py-10 sm:py-14">
+        <div className="grid gap-8 sm:gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-2 font-display text-xl font-extrabold text-white">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-aqua to-ocean">
-                <span aria-hidden>🛶</span>
-              </span>
-              Clear Kayaking Adventures
-            </div>
+            <Image
+              src="/brand/logo-white.png"
+              alt="Clear Kayaking Adventures"
+              width={392}
+              height={128}
+              unoptimized
+              className="h-14 w-[171px] max-w-none object-contain object-left"
+            />
             <p className="mt-4 max-w-sm text-foam/80">
               100% clear kayak eco tours through Jupiter, Florida&apos;s beautiful
               waterways. Small groups, local guides, unforgettable wildlife.
@@ -56,7 +59,7 @@ export function Footer({ content }: { content: SiteContent }) {
             </div>
           </div>
 
-          <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-2 content-start">
+          <nav aria-label="Footer" className="grid grid-cols-2 content-start gap-x-4 gap-y-2 sm:gap-x-6">
             {NAV.map((item) => (
               <Link key={item.href} href={item.href} className="text-foam/85 hover:text-white">
                 {item.label}
@@ -64,26 +67,27 @@ export function Footer({ content }: { content: SiteContent }) {
             ))}
           </nav>
 
-          <div className="space-y-3">
-            <a href={tel} className="flex items-center gap-3 text-foam/90 hover:text-white">
-              <PhoneIcon className="h-5 w-5 text-aqua" /> {site.phone}
+          <div className="min-w-0 space-y-3">
+            <a href={tel} className="flex min-w-0 items-center gap-3 text-foam/90 hover:text-white">
+              <PhoneIcon className="h-5 w-5 shrink-0 text-aqua" /> {site.phone}
             </a>
-            <a href={`mailto:${site.email}`} className="flex items-center gap-3 text-foam/90 hover:text-white">
-              <MailIcon className="h-5 w-5 text-aqua" /> {site.email}
+            <a href={`mailto:${site.email}`} className="flex min-w-0 items-center gap-3 break-words text-foam/90 hover:text-white">
+              <MailIcon className="h-5 w-5 shrink-0 text-aqua" />
+              <span className="min-w-0 break-all">{site.email}</span>
             </a>
             <p className="flex items-center gap-3 text-foam/90">
-              <ClockIcon className="h-5 w-5 text-aqua" /> {site.hours}
+              <ClockIcon className="h-5 w-5 shrink-0 text-aqua" /> {site.hours}
             </p>
             <p className="flex items-center gap-3 text-foam/90">
-              <MapPinIcon className="h-5 w-5 text-aqua" /> Jupiter, Florida
+              <MapPinIcon className="h-5 w-5 shrink-0 text-aqua" /> Jupiter, Florida
             </p>
-            <BookNowButton href={site.fareHarborUrl} className="mt-2">
+            <BookNowButton href={site.fareHarborUrl} className="mt-2 w-full sm:w-auto">
               Book Now
             </BookNowButton>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-foam/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-9 flex flex-col gap-2 border-t border-white/10 pt-5 text-sm text-foam/60 sm:mt-12 sm:flex-row sm:items-center sm:justify-between sm:pt-6">
           <p>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
           <p>Clear Kayaking Jupiter · Indian River &amp; Loxahatchee eco tours</p>
         </div>

@@ -27,7 +27,7 @@ export function SectionHeading({
       )}
       <h2
         className={cn(
-          "text-3xl sm:text-4xl font-extrabold",
+          "text-3xl font-extrabold sm:text-4xl",
           light && "text-white"
         )}
         style={light ? { color: "#fff" } : undefined}
@@ -37,7 +37,7 @@ export function SectionHeading({
       {intro && (
         <p
           className={cn(
-            "mt-4 text-lg",
+            "mt-3 text-base sm:mt-4 sm:text-lg",
             light ? "text-foam/90" : "text-inkmuted"
           )}
         >
