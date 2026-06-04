@@ -48,6 +48,43 @@ Per-route metadata, `app/sitemap.ts`, `app/robots.ts` (disallows `/studio`),
 and JSON-LD via `lib/schema/` (LocalBusiness, WebSite, FAQPage, Review,
 TouristTrip + Offer, BreadcrumbList). Primary keyword: "Clear Kayaking Jupiter".
 
+## Homepage design showcase
+
+Alternative homepage design directions are published on the site at **`/showcase`**
+(a gallery with live previews) and **`/showcase/<slug>`** (each design full-page).
+The page is `noindex`, so it's shareable with stakeholders without affecting SEO.
+
+Each design is a **self-contained HTML file** in `public/design/`, rendered in an
+isolated `<iframe>` so its CSS/fonts never collide with the app. The gallery is
+driven entirely by one registry: `lib/showcase.ts`.
+
+### Adding a homepage design variation
+
+1. **Add the design file.** Drop a self-contained `.html` file in `public/design/`
+   (e.g. `public/design/variation-4-sunrise.html`). It should be a complete page
+   with its own `<style>` — use the existing files as a template, and keep the
+   brand palette + the FareHarbor booking URL.
+2. **Register it.** Add one entry to the `variations` array in `lib/showcase.ts`:
+
+   ```ts
+   {
+     slug: "sunrise",                         // → /showcase/sunrise
+     name: "Sunrise",
+     tagline: "Early-bird tours",
+     description: "Short paragraph on the design direction.",
+     bestFor: "Morning-tour campaigns",
+     file: "/design/variation-4-sunrise.html", // path under /public
+     accent: ["#0e6ba8", "#ff8b3d"],          // card gradient [from, to]
+     // recommended: true,                     // optional — adds a ★ badge
+   }
+   ```
+
+3. **Done.** The gallery card, the live preview thumbnail and the
+   `/showcase/sunrise` full-page route are all generated automatically — no other
+   code changes needed. (Run `npm run build` to pre-render the new static route.)
+
+To remove a variation, delete its registry entry (and optionally its HTML file).
+
 ## Open items (need owner input)
 
 - **Images** — real hero/tour/wildlife photos (currently on-brand gradient
