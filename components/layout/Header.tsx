@@ -39,13 +39,13 @@ export function Header({ content }: { content: SiteContent }) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 transition-colors",
+        "sticky top-0 z-50 border-b border-slate-200/70 transition-colors",
         scrolled
-          ? "bg-white/95 backdrop-blur shadow-sm"
-          : "bg-white/80 backdrop-blur"
+          ? "bg-white/95 shadow-sm backdrop-blur-xl"
+          : "bg-white/85 backdrop-blur-xl"
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-2.5 sm:gap-4 sm:px-6 sm:py-3 lg:px-8">
+      <div className="mx-auto flex h-[70px] max-w-[1180px] items-center justify-between gap-2 px-4 sm:h-[74px] sm:gap-4 sm:px-6 lg:px-8">
         <Link href="/" aria-label="Clear Kayaking Adventures — home" className="flex shrink-0 items-center">
           <Image
             src="/brand/logo.png"
@@ -58,12 +58,12 @@ export function Header({ content }: { content: SiteContent }) {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-base font-medium text-ink/80 hover:text-ocean"
+              className="text-[0.95rem] font-semibold text-ink/80 transition-colors hover:text-ocean"
             >
               {item.label}
             </Link>

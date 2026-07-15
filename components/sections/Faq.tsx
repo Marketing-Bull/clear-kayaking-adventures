@@ -12,14 +12,14 @@ export function Faq({ content }: { content: SiteContent }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-foam py-14 sm:py-20 lg:py-24">
+    <section id="faq" className="section-render scroll-mt-24 bg-foam py-20 sm:py-24 lg:py-28">
       <Container className="max-w-3xl">
         <SectionHeading center eyebrow="Good to Know" title={faqSection.heading} intro={faqSection.intro} />
         <div className="mt-8 space-y-3 sm:mt-10">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={i} className="overflow-hidden rounded-2xl bg-white ring-1 ring-ocean/5">
+              <div key={i} className="overflow-hidden rounded-2xl bg-white ring-1 ring-ocean/10">
                 <button
                   type="button"
                   aria-expanded={isOpen}

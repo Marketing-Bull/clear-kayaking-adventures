@@ -13,12 +13,12 @@ export function Contact({ content }: { content: SiteContent }) {
     { icon: MapPinIcon, label: "Where", value: "Jupiter, Florida" },
   ];
   return (
-    <section id="contact" className="scroll-mt-24 bg-gradient-to-br from-ocean to-deep py-14 text-white sm:py-20 lg:py-24">
+    <section id="contact" className="section-render scroll-mt-24 bg-gradient-to-br from-ocean via-lagoon to-deep py-20 text-white sm:py-24 lg:py-28">
       <Container>
         <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-2">
           <div>
             <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-aqua">Contact Us</p>
-            <h2 className="text-3xl font-extrabold sm:text-4xl" style={{ color: "#fff" }}>
+            <h2 className="max-w-xl text-4xl font-extrabold sm:text-5xl" style={{ color: "#fff" }}>
               Ready to paddle? Let&apos;s get you on the water.
             </h2>
             <p className="mt-3 max-w-xl text-base text-foam/90 sm:mt-4 sm:text-lg">
@@ -31,7 +31,7 @@ export function Contact({ content }: { content: SiteContent }) {
               </BookNowButton>
               <a
                 href={tel}
-                className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-white/10 px-5 py-3 text-base font-semibold text-white ring-1 ring-white/40 hover:bg-white/20 sm:w-auto sm:px-6 sm:text-lg"
+                className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full border border-white/60 bg-transparent px-6 py-3 text-base font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/10 sm:w-auto sm:text-lg"
               >
                 Call {site.phone}
               </a>

@@ -2,8 +2,8 @@ import { getContent } from "@/lib/content";
 import { JsonLd } from "@/components/JsonLd";
 import { faqSchema, reviewsSchema, tourItemListSchema, websiteSchema } from "@/lib/schema";
 import { Hero } from "@/components/sections/Hero";
+import { CrystalIntro } from "@/components/sections/CrystalIntro";
 import { Pillars } from "@/components/sections/Pillars";
-import { TrustStrip } from "@/components/sections/TrustStrip";
 import { ToursSection } from "@/components/sections/ToursSection";
 import { Wildlife } from "@/components/sections/Wildlife";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -19,7 +19,7 @@ export default async function HomePage() {
     <>
       <JsonLd data={[websiteSchema(content), tourItemListSchema(content), faqSchema(content), ...reviewsSchema(content)]} />
       <Hero content={content} />
-      <TrustStrip content={content} />
+      <CrystalIntro content={content} />
       <Pillars content={content} />
       <ToursSection content={content} />
       <Wildlife content={content} />

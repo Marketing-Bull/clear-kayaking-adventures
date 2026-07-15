@@ -1,40 +1,42 @@
-import type { SiteContent, Pillar } from "@/lib/content/types";
+import type { SiteContent } from "@/lib/content/types";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "./SectionHeading";
-import { KayakIcon, GuideIcon, FamilyIcon } from "@/components/ui/icons";
-
-const ICONS = {
-  kayak: KayakIcon,
-  guide: GuideIcon,
-  family: FamilyIcon,
-} as const;
+import { Media } from "@/components/ui/Media";
 
 export function Pillars({ content }: { content: SiteContent }) {
   const { pillarsSection } = content;
   return (
-    <section className="bg-foam py-14 sm:py-20 lg:py-24">
+    <section className="section-render bg-foam py-20 sm:py-24 lg:py-28">
       <Container>
-        <SectionHeading
-          center
-          eyebrow="The Clear Difference"
-          title={pillarsSection.heading}
-        />
-        <div className="mt-8 grid gap-4 sm:mt-10 sm:gap-6 md:grid-cols-3 lg:mt-12">
-          {pillarsSection.pillars.map((p: Pillar) => {
-            const Icon = ICONS[p.icon] ?? KayakIcon;
-            return (
-              <div
-                key={p.title}
-                className="rounded-2xl bg-white p-5 text-center shadow-sm ring-1 ring-ocean/5 transition-transform hover:-translate-y-1 sm:rounded-3xl sm:p-7 lg:p-8"
-              >
-                <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-aqua to-ocean text-white sm:mb-5 sm:h-16 sm:w-16">
-                  <Icon className="h-8 w-8" />
+        <p className="text-center text-xs font-bold uppercase tracking-[0.22em] text-lagoon sm:text-sm">
+          The Clear Difference
+        </p>
+        <h2 className="mx-auto mt-3 max-w-3xl text-center text-4xl font-extrabold sm:text-5xl">
+          {pillarsSection.heading}
+        </h2>
+        <div className="mt-12 space-y-16 sm:mt-16 sm:space-y-20 lg:space-y-24">
+          {pillarsSection.pillars.map((pillar, index) => (
+            <article
+              key={pillar.title}
+              className="grid items-center gap-7 md:grid-cols-2 md:gap-12 lg:gap-16"
+            >
+              <div className={index % 2 ? "md:order-2" : undefined}>
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] shadow-[0_30px_60px_-34px_rgba(7,49,74,0.6)]">
+                  <Media
+                    image={pillar.image ?? { alt: pillar.title }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="transition-transform duration-700 hover:scale-[1.03]"
+                  />
                 </div>
-                <h3 className="text-xl font-bold">{p.title}</h3>
-                <p className="mt-3 text-inkmuted">{p.body}</p>
               </div>
-            );
-          })}
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-lagoon sm:text-sm">
+                  {pillar.eyebrow ?? pillar.title}
+                </p>
+                <h3 className="mt-3 text-3xl font-extrabold sm:text-4xl">{pillar.title}</h3>
+                <p className="mt-4 text-lg leading-relaxed text-inkmuted">{pillar.body}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </Container>
     </section>

@@ -12,6 +12,7 @@
   --color-sunsoft: #ffb066;
   --color-ink: #0c2a3a;
   --color-inkmuted: #496575;
+  --color-gold: #ffce5a;
 
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
@@ -58,7 +59,12 @@ body.menu-open .mobile-booking-bar {
 h1, h2, h3, h4 {
   font-family: var(--font-display), system-ui, sans-serif;
   line-height: 1.1;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.018em;
+  color: var(--color-deep);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-aqua) 45%, white);
   color: var(--color-deep);
 }
 
@@ -71,16 +77,6 @@ h1, h2, h3, h4 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-}
-
-/* Slow, calm "viewfinder" drift for the hero still image */
-@keyframes slow-drift {
-  0%   { transform: scale(1.08) translate3d(0, 0, 0); }
-  50%  { transform: scale(1.13) translate3d(-1.5%, -1%, 0); }
-  100% { transform: scale(1.08) translate3d(0, 0, 0); }
-}
-.animate-slow-drift {
-  animation: slow-drift 32s ease-in-out infinite;
 }
 
 @keyframes shimmer {

@@ -30,9 +30,9 @@ export const sampleContent: SiteContent = {
   },
 
   hero: {
-    heading: "Clear Kayak Tours in Jupiter, FL",
+    heading: "See Jupiter from inside the water.",
     subheading:
-      "Glide over Jupiter's clear blue waterways in a 100% transparent kayak. Small-group, guide-led eco tours make it easy to spot manatees, sea turtles, rays, and tropical fish from your seat.",
+      "Paddle a 100% clear kayak over seagrass, rays, and resting sea turtles. Small-group eco tours led by local Jupiter guides.",
     ctaLabel: "Book Your Clear Kayak Tour",
     image: {
       src: "/images/tours/clear-kayak-guests.webp",
@@ -41,23 +41,44 @@ export const sampleContent: SiteContent = {
     variant: "water",
   },
 
+  introStatement: {
+    eyebrow: "Clear Kayaking in Jupiter, Florida",
+    heading: "A clear hull turns every paddle into a window.",
+    body: "Most kayak tours show you the surface. Ours show you what's underneath it — the bright water, the seagrass flats, and the manatees and turtles that call Jupiter's waterways home. Locally guided, endlessly curious, and small by design.",
+  },
+
   pillarsSection: {
     heading: "Why Clear Kayaking Adventures?",
     pillars: [
       {
+        eyebrow: "100% Clear Kayaks",
         title: "100% Clear Kayaks",
         body: "See straight down to the seagrass, fish, and wildlife below you. Our transparent, impact-resistant kayaks turn an ordinary paddle into an underwater window.",
         icon: "kayak",
+        image: {
+          src: "/images/tours/salt-fish-clear-kayak.webp",
+          alt: "View through a clear kayak over Jupiter's saltwater flats",
+        },
       },
       {
+        eyebrow: "Local knowledge",
         title: "Small Groups & Local Guides",
         body: "Our guides are educationally oriented and Jupiter locals — they know the hotspots and share the stories of the ecosystem while keeping groups small and personal.",
         icon: "guide",
+        image: {
+          src: "/images/tours/mangrove-paddle.webp",
+          alt: "Local-guided clear kayak tour approaching Jupiter mangroves",
+        },
       },
       {
+        eyebrow: "Small & friendly",
         title: "Beginner & Family Friendly",
         body: "No experience needed. Our stable tandem kayaks are easy to paddle and welcome ages 3 and up, so the whole family can join the adventure.",
         icon: "family",
+        image: {
+          src: "/images/tours/private-clear-kayak-tour.webp",
+          alt: "Family clear kayak tour paddling beside Jupiter mangroves",
+        },
       },
     ],
   },

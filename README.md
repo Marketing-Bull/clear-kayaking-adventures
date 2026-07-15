@@ -141,7 +141,7 @@ Both functions are **server-only** (`import "server-only"`). No CMS credentials 
 |---|---|
 | `siteSettings` | Business name, phone, email, FareHarbor URL, Google Place ID, hours, social links, SEO defaults |
 | `announcementBar` | Enabled toggle, announcement text, optional link |
-| `homepage` | Copy for every section: hero, pillars, tours intro, wildlife + disclaimer, how-it-works steps, reviews heading, gift card, FAQ heading, locations heading |
+| `homepage` | Copy for every section: hero, editorial intro statement, image-led pillars, tours intro, wildlife + disclaimer, how-it-works steps, reviews heading, gift card, FAQ heading, locations heading |
 
 **Collections** (ordered, fully editable):
 
@@ -212,7 +212,9 @@ Three homepage design directions are published at **`/showcase`** — a gallery 
 | `book-direct` | Book Direct ⭐ | Conversion-first: rating + price + booking panel above fold | Paid traffic / high-intent |
 | `local-guide` | Local Guide | SEO + authority: wildlife education, answer-style FAQs, local entities | Organic / AI search |
 
-**Recommendation:** ship a hybrid — "Book Direct" above-the-fold on a "Local Guide" body, with "Crystal" hero photography treatment once real images arrive.
+**Original showcase recommendation:** ship a hybrid — "Book Direct" above-the-fold on a "Local Guide" body, with "Crystal" hero photography treatment once real images arrive.
+
+The `variation-1-primary` branch promotes the **Crystal** direction into the CMS-driven Next.js homepage while preserving all production sections, live content fallbacks, booking links, and structured data. The standalone HTML remains the visual reference rather than becoming the production implementation.
 
 The live homepage is also registered as a **"Current · Live"** baseline so stakeholders can compare it directly against the concepts.
 

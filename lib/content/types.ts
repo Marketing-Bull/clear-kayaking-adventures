@@ -33,9 +33,11 @@ export type HowItWorksStep = {
 };
 
 export type Pillar = {
+  eyebrow?: string;
   title: string;
   body: string;
   icon: "kayak" | "guide" | "family";
+  image?: Img;
 };
 
 export type Review = {
@@ -83,6 +85,7 @@ export type SiteContent = {
     image: Img;
     variant: "water" | "mangrove";
   };
+  introStatement: { eyebrow: string; heading: string; body: string };
   pillarsSection: { heading: string; pillars: Pillar[] };
   toursSection: { heading: string; intro: string };
   tours: Tour[];

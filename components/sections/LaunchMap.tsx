@@ -12,12 +12,12 @@ function directionsUrl(loc: SiteContent["locations"][number]) {
 export function LaunchMap({ content }: { content: SiteContent }) {
   const { locations, locationsSection } = content;
   return (
-    <section id="launch" className="scroll-mt-24 py-14 sm:py-20 lg:py-24">
+    <section id="launch" className="section-render scroll-mt-24 bg-white py-20 sm:py-24 lg:py-28">
       <Container>
         <SectionHeading center eyebrow="Find Us" title={locationsSection.heading} intro={locationsSection.intro} />
 
         <div className="mt-8 grid gap-6 sm:mt-10 sm:gap-8 lg:mt-12 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="overflow-hidden rounded-2xl shadow-sm ring-1 ring-ocean/10 sm:rounded-3xl">
+          <div className="overflow-hidden rounded-[1.5rem] shadow-[0_24px_60px_-40px_rgba(7,49,74,0.5)] ring-1 ring-ocean/10">
             <iframe
               title="Map of the Jupiter Inlet launch area"
               src="https://www.google.com/maps?q=Jupiter+Inlet,+Jupiter,+FL&z=11&output=embed"
@@ -29,7 +29,7 @@ export function LaunchMap({ content }: { content: SiteContent }) {
 
           <div className="grid content-start gap-4 sm:gap-5">
             {locations.map((loc) => (
-              <div key={loc.name} className="rounded-2xl bg-foam p-4 sm:rounded-3xl sm:p-6">
+              <div key={loc.name} className="rounded-[1.4rem] bg-foam p-5 sm:p-6">
                 <div className="flex items-start gap-3">
                   <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-aqua to-ocean text-white">
                     <MapPinIcon className="h-5 w-5" />
