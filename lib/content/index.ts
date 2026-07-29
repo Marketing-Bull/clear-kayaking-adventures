@@ -63,10 +63,15 @@ function mapContent(d: any): SiteContent {
       ...clean(hp.hero),
       image: img(hp.hero?.image, s.hero.image),
     },
+    introStatement: { ...s.introStatement, ...clean(hp.introStatement) },
     pillarsSection: {
       heading: hp.pillarsSection?.heading ?? s.pillarsSection.heading,
       pillars: hp.pillarsSection?.pillars?.length
-        ? hp.pillarsSection.pillars
+        ? hp.pillarsSection.pillars.map((pillar: any, index: number) => ({
+            ...s.pillarsSection.pillars[index],
+            ...clean(pillar),
+            image: img(pillar.image, s.pillarsSection.pillars[index]?.image ?? { alt: pillar.title }),
+          }))
         : s.pillarsSection.pillars,
     },
     toursSection: { ...s.toursSection, ...clean(hp.toursSection) },

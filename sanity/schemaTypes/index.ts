@@ -121,6 +121,7 @@ const homepage = defineType({
             defineArrayMember({
               type: "object",
               fields: [
+                defineField({ name: "eyebrow", type: "string" }),
                 defineField({ name: "title", type: "string" }),
                 defineField({ name: "body", type: "text", rows: 3 }),
                 defineField({
@@ -128,10 +129,22 @@ const homepage = defineType({
                   type: "string",
                   options: { list: ["kayak", "guide", "family"] },
                 }),
+                imageWithAlt("image", "Editorial image"),
               ],
             }),
           ],
         }),
+      ],
+    }),
+    defineField({
+      name: "introStatement",
+      title: "Editorial Intro Statement",
+      type: "object",
+      options: { collapsible: true, collapsed: true },
+      fields: [
+        defineField({ name: "eyebrow", type: "string" }),
+        defineField({ name: "heading", type: "string" }),
+        defineField({ name: "body", type: "text", rows: 4 }),
       ],
     }),
     sectionHeading("toursSection", "Tours Section"),

@@ -28,7 +28,7 @@ export function Footer({ content }: { content: SiteContent }) {
   const tel = `tel:${site.phone.replace(/[^0-9]/g, "")}`;
   return (
     <footer className="bg-deep text-foam">
-      <Container className="py-10 sm:py-14">
+      <Container className="py-14 sm:py-16">
         <div className="grid gap-8 sm:gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
             <Image

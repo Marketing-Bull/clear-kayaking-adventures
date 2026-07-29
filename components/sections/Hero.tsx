@@ -4,6 +4,22 @@ import { Media } from "@/components/ui/Media";
 import { BookNowButton } from "@/components/ui/BookNowButton";
 import { StarIcon } from "@/components/ui/icons";
 
+const EMPHASIS = /\binside\b/i;
+
+function HeroHeading({ text }: { text: string }) {
+  const match = EMPHASIS.exec(text);
+  if (!match || match.index === undefined) return text;
+  const start = match.index;
+  const end = start + match[0].length;
+  return (
+    <>
+      {text.slice(0, start)}
+      <em className="font-normal text-aqua">{text.slice(start, end)}</em>
+      {text.slice(end)}
+    </>
+  );
+}
+
 export function Hero({ content }: { content: SiteContent }) {
   const { hero, site, reviews } = content;
   const averageRating = reviews.length
@@ -11,56 +27,51 @@ export function Hero({ content }: { content: SiteContent }) {
     : "5.0";
 
   return (
-    <section className="relative isolate flex min-h-[calc(100svh-7rem)] items-end overflow-hidden sm:min-h-[78vh] sm:items-center lg:min-h-[82vh]">
-      {/* Viewfinder still with slow, calm drift */}
-      <div className="absolute inset-0 -z-10 animate-slow-drift">
+    <section className="relative isolate flex min-h-[82svh] items-end overflow-hidden text-white sm:min-h-[88vh] lg:min-h-[92vh]">
+      <div className="absolute inset-0 z-0">
         <Media image={hero.image} priority sizes="100vw" className="h-full w-full" />
       </div>
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-deep/45 via-ocean/20 to-deep/75" />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_70%_15%,rgba(70,207,214,0.36),transparent_34%),radial-gradient(circle_at_20%_20%,rgba(255,176,102,0.28),transparent_26%)]" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-deep/95 via-deep/35 to-deep/5" />
+      <div className="absolute inset-0 z-[1] bg-[radial-gradient(110%_80%_at_78%_8%,rgba(70,207,214,0.34),transparent_58%)]" />
 
-      <div className="mx-auto w-full max-w-6xl px-4 py-10 pb-24 sm:px-6 sm:py-20 lg:px-8">
-        <div className="max-w-3xl rounded-3xl bg-deep/25 p-4 backdrop-blur-[2px] sm:p-6 lg:p-8">
-          <div className="mb-4 inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-2xl bg-white/15 px-3 py-2 text-xs font-semibold text-white ring-1 ring-white/30 backdrop-blur sm:mb-5 sm:rounded-full sm:px-4 sm:text-sm">
+      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4 pb-20 pt-28 sm:px-6 sm:pb-24 lg:px-8 lg:pb-20">
+        <div className="max-w-4xl">
+          <div className="mb-5 inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 text-xs font-semibold text-white sm:text-sm">
             <span className="flex shrink-0" aria-hidden>
               {Array.from({ length: 5 }).map((_, i) => (
-                <StarIcon key={i} className="h-4 w-4 text-sunsoft" />
+                <StarIcon key={i} className="h-4 w-4 text-gold" />
               ))}
             </span>
-            {averageRating}★ from Google & FareHarbor guest reviews
+            {averageRating}/5 from Google &amp; FareHarbor guest reviews
           </div>
 
-          <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-sunsoft sm:mb-3 sm:text-sm sm:tracking-[0.2em]">
-            Grand opening · New Jupiter location
-          </p>
-          <h1 className="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl" style={{ color: "#fff" }}>
-            {hero.heading}
+          <h1 className="max-w-[15ch] text-5xl font-black leading-[0.96] text-white sm:text-6xl lg:text-7xl xl:text-[5.6rem]" style={{ color: "#fff" }}>
+            <HeroHeading text={hero.heading} />
           </h1>
-          <p className="mt-4 max-w-2xl text-lg font-medium text-white/95 sm:mt-5 sm:text-xl lg:text-2xl">
+          <p className="mt-6 max-w-[42ch] text-lg font-medium leading-relaxed text-foam sm:text-xl lg:text-2xl">
             {hero.subheading}
           </p>
 
-          <div className="mt-6 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:items-center sm:gap-3">
-            <BookNowButton href={site.fareHarborUrl} className="w-full sm:w-auto sm:text-xl">
+          <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center">
+            <BookNowButton href={site.fareHarborUrl} className="w-full sm:w-auto sm:text-lg">
               {hero.ctaLabel}
             </BookNowButton>
             <Link
               href="/#tours"
-              className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-white/10 px-5 py-3 text-base font-semibold text-white ring-1 ring-white/40 backdrop-blur hover:bg-white/20 sm:w-auto sm:px-6 sm:text-lg"
+              className="inline-flex min-h-[52px] w-full items-center justify-center rounded-full border border-white/60 bg-transparent px-6 py-3 text-base font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/10 sm:w-auto sm:px-7 sm:text-lg"
             >
-              View Tours & Pricing
+              Explore Tours
             </Link>
           </div>
 
-          <div className="mt-7 hidden gap-3 text-white sm:grid sm:grid-cols-3">
+          <div className="mt-8 grid grid-cols-2 gap-x-5 gap-y-3 text-sm text-foam sm:flex sm:flex-wrap sm:gap-x-7 sm:text-[0.95rem]">
             {[
-              "100% clear kayaks",
-              "Small groups with local guides",
-              "Beginner & family friendly",
+              "100% Clear Kayaks",
+              "Small Groups (max 10)",
+              "Local Jupiter Guides",
+              "Family friendly (ages 3+)",
             ].map((item) => (
-              <div key={item} className="rounded-xl bg-white/12 px-3 py-2 text-sm font-bold ring-1 ring-white/20 backdrop-blur sm:rounded-2xl sm:px-4 sm:py-3 sm:text-base">
-                {item}
-              </div>
+              <span key={item} className="font-semibold">{item}</span>
             ))}
           </div>
         </div>

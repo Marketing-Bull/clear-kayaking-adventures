@@ -14,9 +14,9 @@ export function BookNowButton({
 }) {
   const isExternal = href.startsWith("http");
   const base =
-    "inline-flex min-h-[48px] items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-3 text-base font-semibold transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun sm:px-6 sm:text-lg";
+    "inline-flex min-h-[52px] items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 text-base font-bold transition duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun sm:px-7 sm:text-lg";
   const variants = {
-    primary: "bg-sun text-white shadow-lg shadow-sun/30 hover:bg-sunsoft",
+    primary: "bg-sun text-white shadow-[0_12px_30px_-10px_rgba(255,139,61,0.72)] hover:bg-[#ff7a22]",
     white: "bg-white text-deep shadow-md hover:bg-foam",
     ghost: "bg-white/15 text-white ring-1 ring-white/40 hover:bg-white/25",
   } as const;

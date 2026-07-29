@@ -1,53 +1,51 @@
 import type { SiteContent } from "@/lib/content/types";
 import { Container } from "@/components/ui/Container";
 import { Media } from "@/components/ui/Media";
-import { SectionHeading } from "./SectionHeading";
-import { cn } from "@/lib/cn";
 
 export function Wildlife({ content }: { content: SiteContent }) {
   const { wildlife, wildlifeSection } = content;
   return (
-    <section id="wildlife" className="scroll-mt-24 bg-gradient-to-b from-white to-foam py-14 sm:py-20 lg:py-24">
-      <Container>
-        <SectionHeading
-          center
-          eyebrow="Jupiter Wildlife"
-          title={wildlifeSection.heading}
-          intro={wildlifeSection.intro}
-        />
+    <section id="wildlife" className="section-render relative scroll-mt-24 overflow-hidden bg-deep py-20 text-white sm:py-24 lg:py-28">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_65%_at_82%_0%,rgba(70,207,214,0.24),transparent_62%)]" />
+      <Container className="relative">
+        <p className="text-xs font-bold uppercase tracking-[0.22em] text-aqua sm:text-sm">
+          Jupiter Wildlife
+        </p>
+        <h2 className="mt-3 max-w-3xl text-4xl font-extrabold text-white sm:text-5xl" style={{ color: "#fff" }}>
+          {wildlifeSection.heading}
+        </h2>
+        <p className="mt-5 max-w-3xl text-lg leading-relaxed text-foam/85">
+          {wildlifeSection.intro}
+        </p>
 
-        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:mt-12 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3">
           {wildlife.map((w) => (
             <article
               key={w.name}
-              className={cn(
-                "group relative overflow-hidden rounded-3xl shadow-sm ring-1 ring-ocean/5",
-                w.highlight ? "sm:col-span-1 lg:row-span-1" : ""
-              )}
+              className={`rounded-2xl border p-5 backdrop-blur-sm sm:p-6 ${
+                w.highlight
+                  ? "border-sun/70 bg-white/[0.08]"
+                  : "border-white/15 bg-white/[0.06]"
+              }`}
             >
-              <div className="relative aspect-[5/4]">
-                <Media image={w.image} sizes="(max-width:768px) 100vw, 33vw" className="transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-deep/85 via-deep/10 to-transparent" />
-              </div>
-              <div className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <h3 className="text-xl font-bold" style={{ color: "#fff" }}>
-                    {w.name}
-                  </h3>
-                  {w.highlight && (
-                    <span className="rounded-full bg-sun px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide">
-                      Guest Favorite
-                    </span>
-                  )}
+              <div className="flex items-start justify-between gap-4">
+                <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/15">
+                  <Media image={w.image} sizes="80px" />
                 </div>
-                <p className="mt-1.5 text-sm text-foam/90">{w.blurb}</p>
+                {w.highlight ? (
+                  <span className="rounded-full bg-sunsoft px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-[0.08em] text-deep">
+                    Guest Favorite
+                  </span>
+                ) : null}
               </div>
+              <h3 className="mt-5 text-2xl font-bold text-white" style={{ color: "#fff" }}>{w.name}</h3>
+              <p className="mt-2 text-[0.95rem] leading-relaxed text-foam/75">{w.blurb}</p>
             </article>
           ))}
         </div>
 
-        <p className="mx-auto mt-6 max-w-3xl rounded-2xl bg-ocean/5 px-4 py-3.5 text-center text-sm text-inkmuted sm:mt-8 sm:px-5 sm:py-4 sm:text-base">
-          <span className="font-semibold text-deep">What you may see: </span>
+        <p className="mt-8 max-w-4xl text-sm leading-relaxed text-foam/60 sm:text-base">
+          <span className="font-semibold text-foam/80">What you may see: </span>
           {wildlifeSection.disclaimer}
         </p>
       </Container>

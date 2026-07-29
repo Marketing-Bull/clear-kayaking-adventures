@@ -141,7 +141,7 @@ Both functions are **server-only** (`import "server-only"`). No CMS credentials 
 |---|---|
 | `siteSettings` | Business name, phone, email, FareHarbor URL, Google Place ID, hours, social links, SEO defaults |
 | `announcementBar` | Enabled toggle, announcement text, optional link |
-| `homepage` | Copy for every section: hero, pillars, tours intro, wildlife + disclaimer, how-it-works steps, reviews heading, gift card, FAQ heading, locations heading |
+| `homepage` | Copy for every section: hero, editorial intro statement, image-led pillars, tours intro, wildlife + disclaimer, how-it-works steps, reviews heading, gift card, FAQ heading, locations heading |
 
 **Collections** (ordered, fully editable):
 
@@ -212,7 +212,9 @@ Three homepage design directions are published at **`/showcase`** — a gallery 
 | `book-direct` | Book Direct ⭐ | Conversion-first: rating + price + booking panel above fold | Paid traffic / high-intent |
 | `local-guide` | Local Guide | SEO + authority: wildlife education, answer-style FAQs, local entities | Organic / AI search |
 
-**Recommendation:** ship a hybrid — "Book Direct" above-the-fold on a "Local Guide" body, with "Crystal" hero photography treatment once real images arrive.
+**Original showcase recommendation:** ship a hybrid — "Book Direct" above-the-fold on a "Local Guide" body, with "Crystal" hero photography treatment once real images arrive.
+
+The `variation-1-primary` branch promotes the **Crystal** direction into the CMS-driven Next.js homepage while preserving all production sections, live content fallbacks, booking links, and structured data. The standalone HTML remains the visual reference rather than becoming the production implementation.
 
 The live homepage is also registered as a **"Current · Live"** baseline so stakeholders can compare it directly against the concepts.
 
@@ -318,27 +320,37 @@ The route rejects any request where the `x-revalidate-secret` header doesn't mat
 
 ## Adding images
 
-The site currently uses **on-brand gradient placeholders** for all photography slots. Swap them in via Sanity (preferred) or by adding files to `public/`.
+The site now includes generated replacements for the homepage hero and all tour
+image slots. Wildlife cards still use the existing placeholders until the final
+Batch 3 images are generated. You can continue swapping assets in via Sanity
+(preferred) or by adding files to `public/`.
 
-See **`IMAGE_GENERATION_BRIEF.md`** for the complete brief covering all 13 photography slots (hero, 6 tour images, 6 wildlife cards), including exact prompts, filenames, and aspect ratios. AI-generated images can fill slots temporarily; replace with authentic tour photography as it becomes available.
+See **`IMAGE_GENERATION_BRIEF.md`** for the full 13-image brief and
+**`IMAGE_GENERATION_QUEUE.md`** for the execution-ready generation queue used
+for the current hero/tour set. AI-generated images can fill slots temporarily;
+replace them with authentic tour photography as it becomes available.
 
 **Recommended filenames and locations:**
 
-```
+```text
 public/
-  hero-clear-kayak-jupiter.webp
-  tour-clear-kayak-eco.webp
-  tour-sunset.webp
-  tour-private-group.webp
-  tour-pro-run.webp
-  tour-indian-river.webp
-  tour-salt-fish.webp
-  wildlife-manatee.webp
-  wildlife-sea-turtle.webp
-  wildlife-ray.webp
-  wildlife-tropical-fish.webp
-  wildlife-coastal-birds.webp
-  wildlife-mangrove-tunnel.webp
+  images/
+    hero/
+      hero-clear-kayak-jupiter.webp
+    tours/
+      tour-clear-kayak-eco.webp
+      tour-sunset.webp
+      tour-private-group.webp
+      tour-pro-run.webp
+      tour-indian-river.webp
+      tour-salt-fish.webp
+    wildlife/
+      wildlife-manatee.webp
+      wildlife-sea-turtle.webp
+      wildlife-ray.webp
+      wildlife-tropical-fish.webp
+      wildlife-coastal-birds.webp
+      wildlife-mangrove-tunnel.webp
 ```
 
 ---
@@ -349,7 +361,7 @@ Things that need owner input before the site is fully production-ready:
 
 | Item | Why it matters |
 |---|---|
-| **Photography** (13 slots) | Currently gradient placeholders. See `IMAGE_GENERATION_BRIEF.md`. |
+| **Wildlife photography** (6 slots) | Wildlife cards still need the final Batch 3 images from `IMAGE_GENERATION_BRIEF.md`. |
 | **Google Business Place ID** | Required for live Google review pull. Set in Sanity → Site Settings. |
 | **Tour prices** | Not shown until set on each tour document in Sanity. |
 | **Gift card link** | Is the gift card sold via FareHarbor or an external service (e.g. Square)? Sets the gift-section CTA URL. |

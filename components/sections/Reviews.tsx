@@ -19,24 +19,24 @@ export function Reviews({ content }: { content: SiteContent }) {
   const avg = (reviews.reduce((s, r) => s + r.rating, 0) / reviews.length).toFixed(1);
 
   return (
-    <section id="reviews" className="scroll-mt-24 bg-deep py-14 text-white sm:py-20 lg:py-24">
+    <section id="reviews" className="section-render scroll-mt-24 bg-sand py-20 sm:py-24 lg:py-28">
       <Container>
         <div className="flex flex-col items-center gap-4 text-center">
-          <SectionHeading center light eyebrow="5-Star Experiences" title={reviewsSection.heading} intro={reviewsSection.subheading} />
-          <div className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-2xl bg-white/10 px-4 py-2 ring-1 ring-white/20 sm:rounded-full sm:px-5">
+          <SectionHeading center eyebrow="5-Star Experiences" title={reviewsSection.heading} intro={reviewsSection.subheading} />
+          <div className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-inkmuted">
             <Stars rating={5} />
-            <span className="text-lg font-bold text-white">{avg}</span>
+            <span className="font-display text-3xl font-extrabold text-ink">{avg}</span>
           </div>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:mt-12 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:mt-12 lg:grid-cols-3">
           {reviews.map((r, i) => (
-            <figure key={i} className="flex flex-col rounded-2xl bg-white/5 p-5 ring-1 ring-white/10 backdrop-blur sm:rounded-3xl sm:p-6">
+            <figure key={i} className="flex flex-col rounded-2xl bg-white p-6 shadow-[0_20px_50px_-34px_rgba(7,49,74,0.45)] ring-1 ring-slate-200/70 sm:p-7">
               <Stars rating={r.rating} />
-              <blockquote className="mt-4 flex-1 text-foam/90">&ldquo;{r.text}&rdquo;</blockquote>
+              <blockquote className="mt-4 flex-1 text-base leading-relaxed text-ink">&ldquo;{r.text}&rdquo;</blockquote>
               <figcaption className="mt-5 flex flex-wrap items-center justify-between gap-2">
-                <span className="font-semibold text-white">{r.author}</span>
-                <span className="rounded-full bg-white/10 px-2.5 py-0.5 text-xs uppercase tracking-wide text-foam/70">
+                <span className="font-bold text-deep">{r.author}</span>
+                <span className="text-xs uppercase tracking-[0.1em] text-inkmuted">
                   {r.source}
                 </span>
               </figcaption>

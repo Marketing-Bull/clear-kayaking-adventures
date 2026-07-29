@@ -8,14 +8,14 @@ import { GiftIcon } from "@/components/ui/icons";
 export function GiftCard({ content }: { content: SiteContent }) {
   const { giftCard } = content;
   return (
-    <section id="gift" className="scroll-mt-24 py-14 sm:py-20 lg:py-24">
+    <section id="gift" className="section-render scroll-mt-24 bg-white py-20 sm:py-24 lg:py-28">
       <Container>
-        <div className="grid items-center gap-8 rounded-2xl bg-gradient-to-br from-lagoon/10 to-aqua/10 p-5 sm:gap-10 sm:rounded-[2rem] sm:p-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:p-12">
+        <div className="grid items-center gap-10 rounded-[1.6rem] bg-gradient-to-br from-foam to-white p-6 ring-1 ring-ocean/10 sm:p-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:p-12">
           <div>
             <p className="mb-3 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-lagoon">
               <GiftIcon className="h-5 w-5" /> The Perfect Gift
             </p>
-            <h2 className="text-3xl font-extrabold sm:text-4xl">{giftCard.heading}</h2>
+            <h2 className="text-4xl font-extrabold sm:text-5xl">{giftCard.heading}</h2>
             <p className="mt-3 max-w-xl text-base text-inkmuted sm:mt-4 sm:text-lg">{giftCard.body}</p>
             <div className="mt-6 sm:mt-7">
               <BookNowButton href={giftCard.ctaUrl} className="w-full sm:w-auto sm:text-lg">
@@ -30,8 +30,8 @@ export function GiftCard({ content }: { content: SiteContent }) {
                 <Media
                   image={
                     giftCard.image ?? {
-                      src: "/images/tours/clear-kayak-guests.webp",
-                      alt: "Clear kayak adventure paddling beside Jupiter mangroves",
+                      src: "/images/tours/tour-private-group.webp",
+                      alt: "Private clear kayak group tour beside Jupiter mangroves",
                     }
                   }
                   sizes="(max-width: 1024px) 100vw, 50vw"
