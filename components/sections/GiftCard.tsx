@@ -30,8 +30,8 @@ export function GiftCard({ content }: { content: SiteContent }) {
                 <Media
                   image={
                     giftCard.image ?? {
-                      src: "/images/tours/clear-kayak-guests.webp",
-                      alt: "Clear kayak adventure paddling beside Jupiter mangroves",
+                      src: "/images/tours/tour-private-group.webp",
+                      alt: "Private clear kayak group tour beside Jupiter mangroves",
                     }
                   }
                   sizes="(max-width: 1024px) 100vw, 50vw"
