@@ -18,7 +18,7 @@ A Next.js 16 (App Router) + Tailwind CSS v4 + Sanity CMS marketing site for a cl
 This project uses **Tailwind v4**, which is **config-file-free**. All design tokens live in `app/globals.css` under `@theme`. Do NOT create or edit `tailwind.config.js` / `tailwind.config.ts`. The `@theme` block defines custom tokens like `--color-deep`, `--color-ocean`, `--color-lagoon`, `--color-aqua`, `--font-display`, etc. Use them as `text-deep`, `bg-ocean`, `font-display` in classNames.
 
 ### Route groups
-The public marketing site lives in `app/(site)/`. The `(site)` group layout adds the announcement bar, header, and footer. The Studio (`/studio`) and Showcase (`/showcase`) routes sit outside this group intentionally — they have no marketing chrome.
+The public marketing site lives in `app/(site)/`. The `(site)` group layout adds the announcement bar, header, and footer. The Studio (`/studio`) route sits outside this group intentionally — it has no marketing chrome.
 
 ### Content layer — `getContent()` is the only entry point
 Never `fetch()` Sanity or Google directly in a component. Always call `getContent()` from `lib/content/index.ts`. It handles the three-layer fallback (sample → Sanity → Google reviews) and is `server-only`. `getTourBySlug(slug)` is the helper for tour detail pages.
@@ -30,13 +30,10 @@ Never `fetch()` Sanity or Google directly in a component. Always call `getConten
 
 | Surface | File | Key CSS |
 |---|---|---|
-| Light (header, showcase) | `/brand/logo.png` | `unoptimized max-w-none` |
+| Light (header) | `/brand/logo.png` | `unoptimized max-w-none` |
 | Dark (footer, gift card) | `/brand/logo-white.png` | `unoptimized max-w-none` |
 
 Always use `unoptimized` and `max-w-none` on logo `<Image>` tags. See README → Brand assets for the reason.
-
-### Design variation HTML files
-`public/design/variation-*.html` are **self-contained HTML files** — no build step, no imports. All CSS is inline `<style>`. They render inside iframes in the showcase. Logo `<img>` tags inside these files need `style="...;max-width:none"` explicitly.
 
 ### `params` in Next.js 16 is a Promise
 Dynamic route params are typed as `Promise<{slug: string}>` and must be awaited:
