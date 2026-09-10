@@ -11,13 +11,12 @@ Full marketing site for **Clear Kayaking Adventures**, a 100% clear-kayak eco-to
 3. [How content works](#how-content-works)
 4. [CMS (Sanity)](#cms-sanity)
 5. [Brand assets](#brand-assets)
-6. [Homepage design showcase](#homepage-design-showcase)
-7. [SEO & JSON-LD schema](#seo--json-ld-schema)
-8. [Environment variables](#environment-variables)
-9. [Deployment (Vercel)](#deployment-vercel)
-10. [On-demand revalidation](#on-demand-revalidation)
-11. [Adding images](#adding-images)
-12. [Open items](#open-items)
+6. [SEO & JSON-LD schema](#seo--json-ld-schema)
+7. [Environment variables](#environment-variables)
+8. [Deployment (Vercel)](#deployment-vercel)
+9. [On-demand revalidation](#on-demand-revalidation)
+10. [Adding images](#adding-images)
+11. [Open items](#open-items)
 
 ---
 
@@ -42,9 +41,6 @@ app/
     layout.tsx                   # marketing chrome — AnnouncementBar, Header, Footer
     page.tsx                     # homepage (composes all sections)
     tours/[slug]/page.tsx        # tour detail + metadata + JSON-LD
-  showcase/
-    page.tsx                     # /showcase — live-preview gallery of design variations
-    [slug]/page.tsx              # /showcase/<slug> — full-page variation viewer
   studio/[[...tool]]/page.tsx    # embedded Sanity Studio at /studio
   api/revalidate/route.ts        # Sanity webhook → on-demand revalidation
   robots.ts / sitemap.ts         # SEO
@@ -52,7 +48,6 @@ app/
 components/
   layout/                        # AnnouncementBar, Header, Footer, MobileBookingBar
   sections/                      # one file per homepage section
-  showcase/PreviewFrame.tsx      # live scaled iframe for /showcase gallery
   ui/                            # BookNowButton, Container, Media, icons
 
 lib/
@@ -67,7 +62,6 @@ lib/
     image.ts                     # URL builder for Sanity image assets
   reviews/google.ts              # server-only Google Places API fetch
   schema/index.ts                # JSON-LD schema builders
-  showcase.ts                    # design variation registry (drives /showcase)
   cn.ts                          # Tailwind class merger
 
 sanity/
@@ -78,12 +72,6 @@ public/
   brand/
     logo.png                     # official logo — full color, transparent bg (light surfaces)
     logo-white.png               # official logo — white knockout (dark surfaces)
-  design/
-    variation-1-crystal.html     # design concept: Crystal (immersive/editorial)
-    variation-2-book-direct.html # design concept: Book Direct (conversion-first)
-    variation-3-local-guide.html # design concept: Local Guide (SEO/authority)
-    index.html                   # comparison index (linked from /showcase)
-    00-website-outline-and-content.md  # full SEO + content strategy doc
 ```
 
 ---
@@ -163,7 +151,7 @@ Singletons open their single document directly. Collections show ordered lists. 
 
 | File | Use |
 |---|---|
-| `public/brand/logo.png` | Full-color, transparent background — header, showcase, light surfaces |
+| `public/brand/logo.png` | Full-color, transparent background — header, light surfaces |
 | `public/brand/logo-white.png` | White knockout — footer, gift card, dark surfaces |
 
 Both assets were sourced from the official WordPress draft (`ClearKayaKingAdventures-Logo.png`), tightly auto-cropped, and exported at 1313×430 px.
@@ -171,7 +159,7 @@ Both assets were sourced from the official WordPress draft (`ClearKayaKingAdvent
 ### Using the logo in components
 
 ```tsx
-// Light background (header, showcase)
+// Light background (header)
 <Image
   src="/brand/logo.png"
   alt="Clear Kayaking Adventures"
@@ -193,57 +181,6 @@ Both assets were sourced from the official WordPress draft (`ClearKayaKingAdvent
 **Why `unoptimized`?** The Next.js image optimizer can stall on this PNG in dev mode, and re-encoding a logo is undesirable anyway — the original is already well-compressed.
 
 **Why `max-w-none`?** Tailwind's preflight sets `img { max-width: 100% }`. Inside a flex container whose intrinsic width is 0, this collapses the logo to 0px. `max-w-none` overrides it.
-
-### Design variation HTML files
-
-The three design concept HTML files in `public/design/` are self-contained and use inline `<img>` tags. Same rules apply — every logo tag uses `style="height:Xpx;width:auto;max-width:none;display:block"`.
-
----
-
-## Homepage design showcase
-
-Three homepage design directions are published at **`/showcase`** — a gallery with live scaled iframe previews and per-variation descriptions. Each design is also viewable full-page at **`/showcase/<slug>`**. The pages are `noindex`, so they're shareable with stakeholders without affecting SEO.
-
-### The three concepts
-
-| Slug | Name | Strategic bet | Best for |
-|---|---|---|---|
-| `crystal` | Crystal | Immersive, editorial, emotional | Brand / social / top-of-funnel |
-| `book-direct` | Book Direct ⭐ | Conversion-first: rating + price + booking panel above fold | Paid traffic / high-intent |
-| `local-guide` | Local Guide | SEO + authority: wildlife education, answer-style FAQs, local entities | Organic / AI search |
-
-**Original showcase recommendation:** ship a hybrid — "Book Direct" above-the-fold on a "Local Guide" body, with "Crystal" hero photography treatment once real images arrive.
-
-The `variation-1-primary` branch promotes the **Crystal** direction into the CMS-driven Next.js homepage while preserving all production sections, live content fallbacks, booking links, and structured data. The standalone HTML remains the visual reference rather than becoming the production implementation.
-
-The live homepage is also registered as a **"Current · Live"** baseline so stakeholders can compare it directly against the concepts.
-
-### Adding a design variation
-
-1. **Create the design file** in `public/design/` (e.g. `variation-4-sunrise.html`). It must be a complete, self-contained HTML page with inline `<style>`. Use an existing variation as a template. Key conventions:
-   - Use `/brand/logo.png` for light headers and `/brand/logo-white.png` for dark footers.
-   - All logo `<img>` tags must include `max-width:none` in their inline style.
-   - Point Book Now links to the FareHarbor URL: `https://fareharbor.com/embeds/book/clearkayakingadventures/items/?full-items=yes`.
-   - Keep the brand palette (CSS custom properties are defined at the top of each file).
-
-2. **Register it** in `lib/showcase.ts`:
-
-   ```ts
-   {
-     slug: "sunrise",                          // URL: /showcase/sunrise
-     name: "Sunrise",
-     tagline: "Early-bird tours",
-     description: "One paragraph on the design direction.",
-     bestFor: "Morning-tour campaigns",
-     file: "/design/variation-4-sunrise.html", // path under /public
-     accent: ["#0e6ba8", "#ff8b3d"],           // card gradient [from, to]
-     // recommended: true,                      // optional — adds a ★ badge
-   }
-   ```
-
-3. **Done.** Gallery card, live preview, and `/showcase/sunrise` route are generated automatically. Run `npm run build` to pre-render the new static route.
-
-To remove a variation, delete its registry entry and optionally its HTML file.
 
 ---
 
