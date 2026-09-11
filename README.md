@@ -210,6 +210,30 @@ Primary keyword: **"Clear Kayaking Jupiter"** / **"Clear Kayak Jupiter"**.
 
 `aggregateRating` is computed from the reviews array and added to `organizationSchema` and `tourSchema` automatically.
 
+### Review markup is gated on real reviews
+
+`reviewsSchema()` and `aggregateRating()` emit **nothing** while the site is
+running on the bundled sample reviews. Those are illustrative placeholders, and
+publishing them as `schema.org/Review` would present invented reviews to search
+engines as genuine customer feedback — a breach of [Google's review snippet
+policy](https://developers.google.com/search/docs/appearance/structured-data/review-snippet)
+that risks a manual action.
+
+`SiteContent.reviewsSource` tracks where the reviews came from:
+
+| Value | Source | Review markup |
+|---|---|---|
+| `placeholder` | `lib/content/sample.ts` | ❌ suppressed |
+| `cms` | Reviews entered in Sanity | ✅ emitted |
+| `google` | Google Places API | ✅ emitted |
+
+It is derived in `getContent()` / `mapContent()`, not a CMS field. Nothing needs
+to be switched on: add reviews in Sanity, or set the Google Place ID and
+`GOOGLE_MAPS_API_KEY`, and the markup starts appearing on its own.
+
+The placeholder reviews still **render** on the page so the section isn't empty
+pre-launch. Replace them with real ones before going live.
+
 ---
 
 ## Environment variables

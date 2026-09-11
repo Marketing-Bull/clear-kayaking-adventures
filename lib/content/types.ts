@@ -48,6 +48,19 @@ export type Review = {
   date?: string;
 };
 
+/**
+ * Where `SiteContent.reviews` came from.
+ *
+ * - `placeholder` — the bundled sample reviews in `lib/content/sample.ts`.
+ *   Illustrative copy, not real customer reviews.
+ * - `cms` — reviews the owner entered in Sanity.
+ * - `google` — pulled live from the Google Places API.
+ *
+ * Only `cms` and `google` reviews get JSON-LD Review / AggregateRating
+ * markup. See `lib/schema/index.ts`.
+ */
+export type ReviewsSource = "placeholder" | "cms" | "google";
+
 export type Faq = {
   question: string;
   answer: string;
@@ -94,6 +107,7 @@ export type SiteContent = {
   howItWorksSection: { heading: string; intro: string; steps: HowItWorksStep[] };
   reviewsSection: { heading: string; subheading: string };
   reviews: Review[];
+  reviewsSource: ReviewsSource;
   giftCard: { heading: string; body: string; ctaLabel: string; ctaUrl: string; image?: Img };
   faqSection: { heading: string; intro: string };
   faqs: Faq[];
