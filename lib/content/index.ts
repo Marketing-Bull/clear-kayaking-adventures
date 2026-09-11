@@ -40,7 +40,7 @@ export async function getContent(): Promise<SiteContent> {
   // Pull live reviews + rating from Google Places when configured.
   const google = await getGoogleReviews(content.site.googlePlaceId);
   if (google.reviews.length) {
-    content = { ...content, reviews: google.reviews };
+    content = { ...content, reviews: google.reviews, reviewsSource: "google" };
   }
 
   return content;
@@ -110,6 +110,7 @@ function mapContent(d: any): SiteContent {
     },
     reviewsSection: { ...s.reviewsSection, ...clean(hp.reviewsSection) },
     reviews: d.reviews?.length ? d.reviews : s.reviews,
+    reviewsSource: d.reviews?.length ? "cms" : s.reviewsSource,
     giftCard: { ...s.giftCard, ...clean(hp.giftCard) },
     faqSection: { ...s.faqSection, ...clean(hp.faqSection) },
     faqs: d.faqs?.length ? d.faqs : s.faqs,

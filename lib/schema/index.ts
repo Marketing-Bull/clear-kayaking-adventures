@@ -2,9 +2,22 @@ import type { SiteContent, Tour } from "@/lib/content/types";
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
+/**
+ * Whether the current reviews may carry JSON-LD review markup.
+ *
+ * The bundled sample reviews are illustrative placeholders, not real customer
+ * feedback. Emitting Review / AggregateRating markup for them would present
+ * invented reviews to search engines as genuine — a breach of Google's review
+ * snippet policy that risks a manual action. Markup resumes automatically once
+ * real reviews arrive from the CMS or the Google Places API.
+ */
+function reviewMarkupAllowed(content: SiteContent): boolean {
+  return content.reviewsSource !== "placeholder" && content.reviews.length > 0;
+}
+
 function aggregateRating(content: SiteContent) {
   const { reviews } = content;
-  if (!reviews.length) return undefined;
+  if (!reviewMarkupAllowed(content)) return undefined;
   const avg =
     reviews.reduce((sum, r) => sum + (r.rating || 0), 0) / reviews.length;
   return {
@@ -133,6 +146,7 @@ export function faqSchema(content: SiteContent) {
 }
 
 export function reviewsSchema(content: SiteContent) {
+  if (!reviewMarkupAllowed(content)) return [];
   return content.reviews.map((r) => ({
     "@context": "https://schema.org",
     "@type": "Review",

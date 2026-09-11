@@ -282,6 +282,10 @@ export const sampleContent: SiteContent = {
     subheading: "Real reviews from paddlers on Google and FareHarbor.",
   },
 
+  // Illustrative placeholder reviews — NOT real customer reviews. They render
+  // on the page so the section isn't empty pre-launch, but `reviewsSource`
+  // keeps them out of the JSON-LD review markup.
+  reviewsSource: "placeholder",
   reviews: [
     {
       author: "Jessica M.",
