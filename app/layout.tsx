@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { getContent } from "@/lib/content";
 
 const display = Fraunces({
@@ -56,7 +57,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="" />
       </head>
-      <body className="min-h-full flex flex-col bg-white text-ink">{children}</body>
+      <body className="min-h-full flex flex-col bg-white text-ink">{children}<Analytics /></body>
     </html>
   );
 }
